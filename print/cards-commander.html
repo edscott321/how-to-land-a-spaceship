@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Written by Website backend/notes/_docs/escape-room-tools/make-levels.mjs from LEVEL_STATIONS in the ship computer's script:
+     change that, not this page. Each card's words are the guide's Commander box for that station, word for word. -->
+<title>Commander Crew Cards · How to Land a Spaceship</title>
+<meta name="description" content="The Commander level crew cards (high school physics) for How to Land a Spaceship, a free physics escape room.">
+<link rel="stylesheet" href="print.css">
+<style>
+@page { size: letter portrait; margin: 0; }
+.card .frame { padding: .22in .32in .18in; }
+.card h2 { font-size: 22pt; text-transform: uppercase; margin: 4pt 0 8pt; }
+.card .cardtext { font-size: 15.5pt; line-height: 1.36; }
+.card .withpic { display: flex; gap: .25in; align-items: flex-start; }
+.card .withpic .cardtext { flex: 1; }
+.card .withpic svg { width: 2.1in; flex: none; }
+.card .notes { font-size: 12pt; line-height: 1.3; }
+.card .notes .line { margin-top: 4pt; padding-left: 12pt; border-left: 2.5pt solid #000; }
+</style>
+</head>
+<body>
+<div class="bar"><b>Commander crew cards (high school physics): 8 cards on 4 pages, cut on the dashed line. Gravity and the main computer use the usual cards.</b><a href="./">All printables</a><a href="../kit/cards-commander.pdf">PDF</a><button type="button" data-print>Print</button></div>
+<div class="sheet">
+  <div class="half card" data-station="lift"><div class="frame">
+    <div class="tag">StS Sentinel · System 02 · Engine Room · Commander</div>
+    <h2>Engine lift</h2>
+    <div class="withpic">
+      <div class="cardtext">The engine block came loose in the strike. It weighs 120 newtons. Rig the rope like the drawing so that 4 pieces of rope hold it, then lift it 0.5 m. Find the force you pull with and how much rope you pull. The work you do is that force times that distance. How many joules of work does it take?</div>
+      <svg viewBox="80 10 450 580" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" aria-label="The rope drawing: 4 pieces of rope hold the engine">
+        <rect x="90" y="16" width="420" height="26" fill="#fff" stroke-width="4"/>
+        <circle cx="150" cy="54" r="10" stroke-width="4"/><circle cx="430" cy="54" r="10" stroke-width="4"/>
+        <path d="M290 42 V70" stroke-width="6"/>
+        <circle cx="290" cy="130" r="60" fill="#fff" stroke-width="4"/><circle cx="290" cy="130" r="7" fill="#000"/>
+        <path d="M190 400 L290 488 L390 400" stroke-width="6"/>
+        <circle cx="190" cy="400" r="40" fill="#fff" stroke-width="4"/><circle cx="190" cy="400" r="6" fill="#000"/>
+        <circle cx="390" cy="400" r="40" fill="#fff" stroke-width="4"/><circle cx="390" cy="400" r="6" fill="#000"/>
+        <path d="M290 488 V506" stroke-width="6"/>
+        <rect x="215" y="506" width="150" height="74" rx="8" fill="#fff" stroke-width="4"/>
+        <text x="290" y="552" font-size="30" font-weight="700" text-anchor="middle" fill="#000" stroke="none">120 N</text>
+        <path d="M150 64 V400 A40 40 0 0 0 230 400 V130 A60 60 0 0 1 350 130 V400 A40 40 0 0 0 430 400 V54 Q430 40 446 40 Q480 40 480 70 V330" stroke-width="7"/>
+        <path d="M462 312 L480 340 L498 312" stroke-width="6"/>
+        <g font-size="26" font-weight="700" text-anchor="middle">
+          <circle cx="118" cy="290" r="20" fill="#fff" stroke-width="3.5"/><text x="118" y="299" fill="#000" stroke="none">1</text>
+          <circle cx="258" cy="290" r="20" fill="#fff" stroke-width="3.5"/><text x="258" y="299" fill="#000" stroke="none">2</text>
+          <circle cx="322" cy="290" r="20" fill="#fff" stroke-width="3.5"/><text x="322" y="299" fill="#000" stroke="none">3</text>
+          <circle cx="455" cy="250" r="20" fill="#fff" stroke-width="3.5"/><text x="455" y="259" fill="#000" stroke="none">4</text>
+        </g>
+      </svg>
+    </div>
+    <div class="foot"><span>Take your code to the ship computer.</span><span>How to Land a Spaceship</span></div>
+  </div></div>
+  <div class="cut"><span>✂ CUT</span></div>
+  <div class="half card" data-station="gears"><div class="frame">
+    <div class="tag">StS Sentinel · System 03 · Engine Room · Commander</div>
+    <h2>Engine gears</h2>
+    <div class="cardtext">To restart the engine, the big gear (48 teeth) has to twist hard. The starter motor turns the small gear (12 teeth) with a torque of 3.5 newton meters. What torque does the big gear give the engine, in newton meters? Leave out friction.</div>
+    <div class="foot"><span>Take your code to the ship computer.</span><span>How to Land a Spaceship</span></div>
+  </div></div>
+</div>
+<div class="sheet">
+  <div class="half card" data-station="tank"><div class="frame">
+    <div class="tag">StS Sentinel · System 04 · Fuel Bay · Commander</div>
+    <h2>Fuel tank</h2>
+    <div class="cardtext">ROBOT PROTOCOL 65: refill the tank to the line. It holds exactly 5 cups (1183 mL) of fuel vapor at 100 kPa. Before landing, the pump squeezes all of it into the 500 mL landing tank at the same temperature. What is the pressure in the landing tank, in kPa? Round to the nearest kPa.</div>
+    <div class="foot"><span>Take your code to the ship computer.</span><span>How to Land a Spaceship</span></div>
+  </div></div>
+  <div class="cut"><span>✂ CUT</span></div>
+  <div class="half card" data-station="balance"><div class="frame">
+    <div class="tag">StS Sentinel · System 05 · Fuel Bay · Commander</div>
+    <h2>Fuel balance</h2>
+    <div class="cardtext">The ship tips if its fuel isn't balanced. The left tank (300 g) sits 20 cm from the middle, and a 200 g sensor is bolted 30 cm out on the same side. The right tank weighs 400 g. How many centimeters from the middle must the right tank go so the torques balance? Try a smaller version on the ruler first.</div>
+    <div class="foot"><span>Take your code to the ship computer.</span><span>How to Land a Spaceship</span></div>
+  </div></div>
+</div>
+<div class="sheet">
+  <div class="half card" data-station="wiring"><div class="frame">
+    <div class="tag">StS Sentinel · System 06 · Navigation · Commander</div>
+    <h2>Navigation wiring</h2>
+    <div class="cardtext">The navigation wire was knocked loose. Build the backup circuit exactly as the diagram shows. The battery gives 9 volts and every lamp is 6 ohms. How much current flows through path C, in milliamps?</div>
+    <div class="foot"><span>Take your code to the ship computer.</span><span>How to Land a Spaceship</span></div>
+  </div></div>
+  <div class="cut"><span>✂ CUT</span></div>
+  <div class="half card" data-station="thrusters"><div class="frame">
+    <div class="tag">StS Sentinel · System 07 · Navigation · Commander</div>
+    <h2>Thrusters</h2>
+    <div class="cardtext">PSHH! The steering thrusters need testing. Launch the tray with 1 rubber band, then with 3, and feel which way the bands push back. Now the real thing: the 3 kg landing pod sits still, then a thruster throws 0.2 kg of gas backward at 150 m/s. How fast does the pod move forward, in meters per second?</div>
+    <div class="foot"><span>Take your code to the ship computer.</span><span>How to Land a Spaceship</span></div>
+  </div></div>
+</div>
+<div class="sheet">
+  <div class="half card" data-station="reentry"><div class="frame">
+    <div class="tag">StS Sentinel · System 09 · The Bridge · Commander</div>
+    <h2>Re-entry angle</h2>
+    <div class="cardtext">The Sentinel's heat shield is safe between 5.2° and 7.2°. Steeper than 7.2° and the ship burns up. Shallower than 5.2° and it skips off the air back into space. The ship moves at 11,000 m/s along its path, and each path has its own speed straight down. The sine of the angle below level is the speed down ÷ the speed along the path. Path A: 350 m/s down. Path B: 1,150 m/s down. Path C: 2,300 m/s down. Work out all three, pick the safe one, and type its angle.</div>
+    <div class="foot"><span>Goes in the locked plastic box. Type the angle into the ship computer.</span><span>How to Land a Spaceship</span></div>
+  </div></div>
+  <div class="cut"><span>✂ CUT</span></div>
+  <div class="half card" data-extra="commander"><div class="frame">
+    <div class="tag">StS Sentinel · One per crew · Commander</div>
+    <h2>Formula card</h2>
+    <div class="notes"><div>Every formula this mission needs. Leave out friction and air everywhere except in the re-entry.</div><div class="line">Work: W = F × d (joules = newtons × meters)</div><div class="line">Torque: τ = F × r. Meshed gears push with the same F, so τ grows with r (and with the number of teeth).</div><div class="line">Boyle's law, same temperature: P1 × V1 = P2 × V2</div><div class="line">Ohm's law: V = I × R. Lamps one after another add: R = R1 + R2.</div><div class="line">Momentum: p = m × v. When something pushes off, the two momenta are equal and opposite.</div><div class="line">The angle below level: sin(angle) = speed down ÷ speed along the path</div></div>
+    <div class="foot"><span>Keep it on the table.</span><span>How to Land a Spaceship</span></div>
+  </div></div>
+</div>
+<script>document.querySelectorAll('[data-print]').forEach(function(b){b.addEventListener('click',function(){window.print();});});</script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ship Computer · How to Land a Spaceship</title>
+<meta name="description" content="The ship computer for How to Land a Spaceship, a free physics escape room: put it on the projector and crews type their codes to bring the StS Sentinel home.">
+<style>
+:root { --bg: #070b16; --panel: #0f1628; --line: #24304d; --ink: #e8ecf5; --dim: #8b97b3; --red: #ff4d5e; --green: #3ee08a; --amber: #ffc24a; --cyan: #5fd4ff; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink); font: 18px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+body { min-height: 100vh; }
+button, input { font: inherit; color: inherit; }
+button { cursor: pointer; }
+[hidden] { display: none !important; }
+a { color: var(--cyan); }
+.wrap { max-width: 1280px; margin: 0 auto; padding: 24px 16px 40px; }
+h1, h2, h3 { margin: 0; line-height: 1.15; }
+.kicker { color: var(--cyan); letter-spacing: .18em; text-transform: uppercase; font-size: 13px; font-weight: 700; }
+.btn { background: var(--cyan); color: #04121c; border: 0; border-radius: 10px; padding: 12px 22px; font-weight: 700; }
+.btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.btn:disabled { opacity: .45; cursor: default; }
+
+/* setup */
+#setup .wrap { max-width: 860px; }
+#setup h1 { font-size: clamp(32px, 5vw, 52px); margin: 8px 0 6px; }
+#setup p.lede { color: var(--dim); margin: 0 0 24px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 20px; margin-bottom: 18px; }
+.card h2 { font-size: 20px; margin-bottom: 12px; }
+.fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+label.f { display: grid; gap: 6px; color: var(--dim); font-size: 15px; }
+input { background: #0a1020; border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; width: 100%; }
+input:focus { outline: 2px solid var(--cyan); outline-offset: 1px; }
+#codes { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px 18px; }
+.code-row { display: grid; grid-template-columns: 1fr 110px; align-items: center; gap: 10px; }
+.code-row small { display: block; color: var(--dim); font-size: 13px; }
+.row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.small { color: var(--dim); font-size: 15px; }
+#resume { border-color: var(--amber); }
+fieldset { border: 0; padding: 0; margin: 0 0 14px; min-width: 0; }
+legend { color: var(--dim); font-size: 15px; margin-bottom: 8px; padding: 0; }
+.choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; }
+.choice { position: relative; display: grid; gap: 2px; background: #0a1020; border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px 12px 42px; cursor: pointer; }
+.choice input { position: absolute; left: 14px; top: 15px; width: 18px; height: 18px; margin: 0; accent-color: var(--cyan); }
+.choice small { color: var(--dim); font-size: 14px; }
+.choice:has(input:checked) { border-color: var(--cyan); background: #0c1a30; }
+.choice:has(input:focus-visible) { outline: 2px solid var(--cyan); outline-offset: 1px; }
+
+/* mission */
+.top { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
+.top h1 { font-size: clamp(24px, 3vw, 36px); }
+#clock { font: 700 clamp(56px, 9vw, 120px)/1 ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: .02em; color: var(--ink); }
+body.low #clock { color: var(--red); animation: blink 1s steps(2) infinite; }
+body.low { background: radial-gradient(ellipse at center, #1a0710 0%, var(--bg) 70%); }
+@keyframes blink { 50% { opacity: .35; } }
+#progress { color: var(--dim); }
+#panel { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.group { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px; display: grid; gap: 10px; align-content: start; }
+.group h3 { font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--dim); }
+.sys { display: grid; grid-template-columns: 22px 1fr; grid-template-rows: auto auto; column-gap: 12px; text-align: left; background: #0a1020; border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+.sys b { font-size: 19px; } .sys small { grid-column: 2; color: var(--dim); font-size: 14px; }
+.light { grid-row: span 2; width: 18px; height: 18px; border-radius: 50%; align-self: center; background: #333b52; }
+.sys.red { border-color: rgba(255,77,94,.55); } .sys.red .light { background: var(--red); box-shadow: 0 0 14px var(--red); animation: blink 1.4s steps(2) infinite; }
+.sys.green { border-color: rgba(62,224,138,.5); } .sys.green .light { background: var(--green); box-shadow: 0 0 14px var(--green); }
+.sys.green small { color: var(--green); }
+.sys.off { opacity: .45; cursor: default; }
+.sys.flash { animation: flash .9s ease-out; }
+@keyframes flash { from { background: rgba(62,224,138,.45); } to { background: #0a1020; } }
+.sys.red:hover, .sys.red:focus-visible { background: #141c33; }
+/* several crews: one lane each */
+#panel.lanes { grid-template-columns: 1fr; gap: 12px; }
+body.many #mission .wrap { max-width: 1800px; }
+.lane { display: grid; grid-template-columns: clamp(150px, 12vw, 240px) 1fr; gap: 12px; align-items: center; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 12px; }
+.lane.home { border-color: rgba(62,224,138,.5); }
+.lane-name b { display: block; font-size: clamp(20px, 1.6vw, 30px); overflow-wrap: anywhere; } .lane-name small { color: var(--dim); font-size: 14px; }
+.lane.home .lane-name small { color: var(--green); }
+.lane-sys { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 6px; }
+.sys.mini { grid-template-columns: 1fr; grid-template-rows: auto auto auto; justify-items: center; text-align: center; padding: clamp(8px, 1.2vh, 18px) 4px; row-gap: 4px; }
+.sys.mini .light { grid-row: auto; width: 14px; height: 14px; }
+.sys.mini b { font-size: clamp(15px, 1.15vw, 22px); overflow-wrap: anywhere; } .sys.mini small { grid-column: auto; font-size: clamp(12px, .8vw, 15px); }
+@media (max-width: 900px) { .lane { grid-template-columns: 1fr; } .lane-sys { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .lane-sys { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.tools { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+.keys { color: var(--dim); font-size: 14px; margin-top: 10px; }
+kbd { border: 1px solid var(--line); border-radius: 4px; padding: 0 6px; font: 13px ui-monospace, Menlo, monospace; }
+
+/* the code entry, over the panel */
+.over { position: fixed; inset: 0; background: rgba(3,6,14,.78); display: grid; place-items: center; padding: 16px; z-index: 5; }
+.dialog { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 24px; width: min(640px, 100%); max-height: 92vh; overflow: auto; }
+.dialog h2 { font-size: clamp(26px, 3.4vw, 38px); margin: 4px 0 10px; }
+.dialog .ask { font-size: 21px; margin: 0 0 16px; }
+#q-msg { font: 700 clamp(22px, 3.2vw, 34px)/1.3 ui-monospace, Menlo, monospace; letter-spacing: .2em; color: var(--amber); background: #0a1020; border: 1px dashed var(--amber); border-radius: 10px; padding: 14px; margin: 0 0 16px; word-break: break-word; }
+#q-in { font: 700 40px ui-monospace, Menlo, monospace; text-align: center; letter-spacing: .15em; padding: 14px; }
+.note { min-height: 1.5em; margin: 10px 0 0; } .note.bad { color: var(--red); }
+#q-hints { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+#q-hints li { background: #0a1020; border-left: 3px solid var(--amber); padding: 8px 12px; border-radius: 0 8px 8px 0; }
+#q-hints b { color: var(--amber); margin-right: 6px; }
+.dialog .row { margin-top: 16px; }
+.shake { animation: shake .4s; }
+@keyframes shake { 20%, 60% { transform: translateX(-10px); } 40%, 80% { transform: translateX(10px); } }
+#paused, #timeout { text-align: center; }
+#paused h2, #timeout h2 { font-size: clamp(36px, 6vw, 72px); }
+#timeout h2 { color: var(--red); }
+#announce { position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 30px); opacity: 0; background: var(--green); color: #032013; font-weight: 700; padding: 12px 22px; border-radius: 30px; transition: .3s; z-index: 6; }
+#announce.on { opacity: 1; transform: translate(-50%, 0); }
+
+/* re-entry */
+#flight { position: fixed; inset: 0; z-index: 7; background: #04070f; }
+#sky { width: 100%; height: 100%; display: block; }
+.flight-bar { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 16px 24px; text-align: center; background: linear-gradient(transparent, rgba(4,7,15,.9) 40%); }
+#flight-note { font-size: 22px; margin: 0 auto 12px; max-width: 760px; }
+
+/* done */
+#done .wrap { max-width: 760px; text-align: center; padding-top: 48px; }
+#done h1 { font-size: clamp(36px, 6vw, 64px); color: var(--green); margin: 10px 0; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 26px 0; text-align: left; }
+.stats div { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
+.stats span { display: block; color: var(--dim); font-size: 14px; } .stats b { font-size: 24px; }
+#done .row { justify-content: center; }
+#d-many { width: 100%; border-collapse: collapse; margin: 26px 0; text-align: left; }
+#d-many th, #d-many td { padding: 10px 12px; border-bottom: 1px solid var(--line); }
+#d-many thead th { color: var(--dim); font-size: 14px; font-weight: 600; }
+#d-many tbody th { font-size: 20px; }
+
+@media (max-width: 560px) { html, body { font-size: 16px; } .code-row { grid-template-columns: 1fr 90px; } }
+@media print {
+  body { background: #fff; color: #000; } #setup, #mission, .over, #done .row { display: none !important; }
+  #done h1 { color: #000; } #d-many th, #d-many td { color: #000; border-color: #999; } .stats div { background: #fff; border-color: #999; } .stats span { color: #444; }
+}
+/* (2026-11-07, WCAG 2.2.2 / 2.3.3) Reduced motion stops the loops. */
+@media (prefers-reduced-motion: reduce) { body.low #clock, .sys.red .light { animation: none; } }
+</style>
+</head>
+<body>
+
+<section id="setup">
+  <div class="wrap">
+    <div class="kicker">StS Sentinel · ship computer</div>
+    <h1>How to Land a Spaceship</h1>
+    <p class="lede">Put this page on the projector. Crews fix the ship one system at a time and type each station's code here. When every system is green, they pick the angle to come home at. The <a href="../guide/">teacher guide</a> has the stations, answers and hints, and <a href="https://ethandavidmagalei.com/escape-room/">the kit's page</a> has everything else.</p>
+
+    <div class="card" id="resume" hidden>
+      <h2>A mission is still running</h2>
+      <p class="small">It was saved in this browser with these settings. Pick it up where the crew left off, or set up a new one below.</p>
+      <button class="btn" id="resume-go" type="button">Resume the mission</button>
+    </div>
+
+    <form id="setup-form">
+      <div class="card">
+        <h2>The mission</h2>
+        <fieldset><legend>How you're running it</legend><div class="choices" id="f-mode"></div></fieldset>
+        <fieldset><legend>Level</legend><div class="choices" id="f-level"></div></fieldset>
+        <p class="small" id="level-print"></p>
+        <div class="fields">
+          <label class="f">Crew names, with commas between (up to 6)<input id="f-crew" maxlength="160" autocomplete="off"></label>
+          <label class="f">Minutes on the clock<input id="f-min" type="number" min="5" max="120" step="1"></label>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Codes</h2>
+        <p class="small">These match the guide. If your own locks, gears or pulleys give different numbers, change them here so the screen agrees with your room.</p>
+        <div id="codes"></div>
+        <div class="fields" style="margin-top:14px">
+          <label class="f">Cipher shift (rope pieces holding the engine)<input id="f-shift" type="number" min="1" max="25" step="1"></label>
+          <label class="f">Safe angle, lowest (°)<input id="f-lo" type="number" min="0.1" max="89" step="0.1"></label>
+          <label class="f">Safe angle, highest (°)<input id="f-hi" type="number" min="0.1" max="89" step="0.1"></label>
+        </div>
+        <div class="row" style="margin-top:14px"><button class="btn ghost" id="reset-codes" type="button">Put the guide's codes back</button></div>
+      </div>
+      <div class="row">
+        <button class="btn" id="go" type="button">Start the mission</button>
+        <span class="small">Bookmark the page after you start and your settings come back with it.</span>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section id="mission" hidden>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="kicker">StS Sentinel · <span id="crew"></span> · <span id="level"></span></div>
+        <h1>Bring the ship home</h1>
+        <div id="progress"></div>
+      </div>
+      <div id="clock" aria-live="off">35:00</div>
+    </div>
+    <div id="panel"></div>
+    <div class="tools">
+      <button class="btn ghost" id="b-pause" type="button">Pause</button>
+      <button class="btn ghost" id="b-plus" type="button">+5 minutes</button>
+      <button class="btn ghost" id="b-mute" type="button" aria-pressed="false">Sound on</button>
+      <button class="btn ghost" id="b-results" type="button" hidden>Show the results</button>
+      <button class="btn ghost" id="b-setup" type="button">End mission</button>
+    </div>
+    <p class="keys"><kbd>P</kbd> pause · <kbd>H</kbd> hint · <kbd>F</kbd> full screen · <kbd>Esc</kbd> close</p>
+  </div>
+
+  <div class="over" id="entry" hidden>
+    <form class="dialog" id="q-form" autocomplete="off">
+      <div class="kicker" id="q-room"></div>
+      <h2 id="q-name"></h2>
+      <p class="ask" id="q-ask"></p>
+      <p id="q-msg" hidden></p>
+      <input id="q-in" aria-label="Code" maxlength="12">
+      <p class="note" id="q-note" role="status"></p>
+      <div class="row">
+        <button class="btn" type="submit">Enter</button>
+        <button class="btn ghost" id="q-hint" type="button">Hint 1 of 3 (H)</button>
+        <button class="btn ghost" id="q-close" type="button">Close</button>
+      </div>
+      <ul id="q-hints"></ul>
+    </form>
+  </div>
+  <div class="over" id="paused" hidden><div><h2>Paused</h2><p class="small">Press P to carry on.</p></div></div>
+  <div class="over" id="timeout" hidden><div><h2>Signal lost</h2><p>The clock ran out before the Sentinel was home.</p><div class="row" style="justify-content:center"><button class="btn" id="timeout-plus" type="button">Give the crew 5 more minutes</button></div></div></div>
+  <div id="announce" role="status"></div>
+
+  <div id="flight" hidden>
+    <canvas id="sky" aria-label="The Sentinel coming down through the atmosphere"></canvas>
+    <div class="flight-bar"><p id="flight-note" role="status"></p><button class="btn" id="flight-again" type="button" hidden>Try another angle</button></div>
+  </div>
+</section>
+
+<section id="done" hidden>
+  <div class="wrap">
+    <div class="kicker">Splashdown</div>
+    <h1>The Sentinel is home</h1>
+    <div id="d-one">
+    <p>Every system came back online and <b id="d-crew"></b> brought the ship down safely.</p>
+    <div class="stats">
+      <div><span>Time</span><b id="d-time"></b></div>
+      <div><span>Entry angle</span><b id="d-angle"></b></div>
+      <div><span>Hints used</span><b id="d-hints"></b></div>
+      <div><span>Landing</span><b id="d-tries"></b></div>
+    </div>
+    </div>
+    <table id="d-many" hidden><thead><tr><th scope="col">Crew</th><th scope="col">Time</th><th scope="col">Angle</th><th scope="col">Hints</th><th scope="col">Landing</th></tr></thead><tbody id="d-rows"></tbody></table>
+    <div class="row">
+      <button class="btn" id="again" type="button">New mission</button>
+      <button class="btn ghost" id="print" type="button">Print this</button>
+    </div>
+  </div>
+</section>
+
+<script src="ship.js"></script>
+</body>
+</html>

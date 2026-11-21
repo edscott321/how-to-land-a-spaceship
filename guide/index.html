@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The codes, hints and angles here must match MISSION in ../ship/ship.js (tests/escape-room.test.mjs checks).
+     The Cadet and Commander section is written by Website backend/notes/_docs/escape-room-tools/make-levels.mjs. -->
+<title>Teacher Guide · How to Land a Spaceship</title>
+<meta name="description" content="The teacher guide for How to Land a Spaceship, a free physics escape room for grades 4 to 12: the story, nine stations at three levels, every answer and hint, three ways to run it, and a 50-minute run sheet.">
+<style>
+:root { --ink: #1b2233; --dim: #5b6478; --line: #d9dee8; --bg: #fff; --soft: #f4f6fa; --accent: #0b6fa4; --red: #c62f3f; --green: #1c8a52; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --ink: #e8ecf5; --dim: #9aa5bd; --line: #2b354c; --bg: #0b1020; --soft: #121a2e; --accent: #5fd4ff; --red: #ff6b78; --green: #3ee08a; } }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width: 860px; margin: 0 auto; padding: 32px 16px 64px; }
+h1 { font-size: clamp(32px, 6vw, 48px); line-height: 1.1; margin: 6px 0 10px; }
+h2 { font-size: 26px; margin: 48px 0 12px; padding-top: 12px; border-top: 2px solid var(--ink); }
+h3 { font-size: 20px; margin: 28px 0 8px; }
+a { color: var(--accent); }
+.kicker { color: var(--accent); letter-spacing: .16em; text-transform: uppercase; font-size: 13px; font-weight: 700; }
+.lede { font-size: 19px; color: var(--dim); }
+.glance { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 22px 0; }
+.glance div { background: var(--soft); border-radius: 10px; padding: 12px 14px; }
+.glance span { display: block; color: var(--dim); font-size: 13px; text-transform: uppercase; letter-spacing: .08em; }
+.glance b { font-size: 18px; }
+table { width: 100%; border-collapse: collapse; margin: 10px 0 18px; font-size: 16px; }
+th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+th { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--dim); }
+.lvl { font-size: 24px; margin-top: 40px; }
+.station { border: 1px solid var(--line); border-radius: 14px; padding: 4px 20px 16px; margin: 22px 0; break-inside: avoid; }
+.station h3 { margin-top: 16px; }
+.station .room { color: var(--dim); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; }
+dl { display: grid; grid-template-columns: 150px 1fr; gap: 6px 14px; margin: 10px 0; }
+dt { font-weight: 700; color: var(--dim); font-size: 15px; }
+dd { margin: 0; }
+.cardtext { background: var(--soft); border-left: 4px solid var(--accent); padding: 10px 14px; border-radius: 0 8px 8px 0; }
+.answer { font-weight: 700; color: var(--green); }
+ol.hints { margin: 0; padding-left: 20px; }
+.script { background: var(--soft); border-radius: 12px; padding: 14px 18px; font-style: italic; }
+.flow { font-family: ui-monospace, Menlo, monospace; font-size: 15px; background: var(--soft); border-radius: 12px; padding: 14px 18px; overflow-x: auto; white-space: pre; line-height: 1.5; }
+.btn { display: inline-block; background: var(--accent); color: #fff; text-decoration: none; font-weight: 700; padding: 10px 18px; border-radius: 10px; margin: 6px 8px 6px 0; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn { color: #04121c; } }
+.noprint { }
+@media (max-width: 600px) { dl { grid-template-columns: 1fr; } dt { margin-top: 6px; } }
+@media print {
+  :root { --ink: #000; --dim: #444; --line: #bbb; --bg: #fff; --soft: #f1f1f1; --accent: #000; --green: #000; }
+  html, body { font-size: 11pt; } main { max-width: none; padding: 0; } .noprint { display: none; }
+  h2 { break-before: page; margin-top: 0; } h2.keep { break-before: auto; }
+  a { color: #000; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+<main>
+
+<div class="kicker">A free physics escape room · Teacher guide</div>
+<h1>How to Land a Spaceship</h1>
+<p class="lede">The StS Sentinel is on its way home when a meteorite hits it. Gravity, the engine, the fuel and the main computer are down. Your students are the crew: they fix the ship one system at a time with real physics, then pick the angle that brings it through the atmosphere without burning up or bouncing back into space.</p>
+<p>I built this in the first week of the 2024 Stanford Spokes ride and ran it at almost every stop on the way from San Francisco to Washington, D.C. This version writes every station down so you can run it in your own classroom. It's free to use, copy and change. The stations below are the Officer level (grades 6 to 9); <a href="#levels">Cadet and Commander</a> are near the end.</p>
+
+<div class="glance">
+  <div><span>Grades</span><b>4 to 12, at three levels</b></div>
+  <div><span>Time</span><b>50 minutes</b></div>
+  <div><span>Crew</span><b>6 to 15, or a whole class in crews</b></div>
+  <div><span>Setup</span><b>About 20 minutes</b></div>
+  <div><span>Physics</span><b>Newton's laws, simple machines, volume, balance, circuits, re-entry</b></div>
+</div>
+
+<p class="noprint"><a class="btn" href="../ship/">Open the ship computer</a><a class="btn" href="../print/">Printables</a><button class="btn" type="button" data-print style="border:0;font:inherit;font-weight:700;cursor:pointer">Print this guide</button></p>
+
+<h2 class="keep">How it runs</h2>
+<table>
+  <tr><th>Minutes</th><th>What happens</th></tr>
+  <tr><td>0 to 5</td><td>The Admiral's briefing (you read the script below, with the Starship Sentinel slides if you have them). Then the lights go off: gravity has failed.</td></tr>
+  <tr><td>5 to 40</td><td>The mission. The ship computer on the projector counts down from 35:00. Crews split up across the three rooms once gravity is back.</td></tr>
+  <tr><td>40 to 50</td><td>Debrief: what each station was really about, and the exit questions at the end of this guide.</td></tr>
+</table>
+
+<p>The ship computer is a web page. Open it on the projector before class, press Start, and leave it running. Each station ends in a code. A crew member walks to the screen, taps the system, and types the code. Right codes turn the system green; wrong ones buzz and shake. The <b>H</b> key shows a hint for the open station, <b>P</b> pauses, and <b>+5 minutes</b> is there if a class needs it. Nothing is sent anywhere and no student names are needed.</p>
+
+<h3>The order</h3>
+<div class="flow">Briefing
+   │
+Artificial gravity  ───────────── (opens the 3-digit metal box)
+   │
+   ├── Engine Room:  Engine lift · Engine gears
+   ├── Fuel Bay:     Fuel tank · Fuel balance
+   └── Navigation:   Navigation wiring · Thrusters
+   │   (all six green)
+Main computer: the Admiral's coded message
+   │   (with the fuel code, opens the plastic box)
+Re-entry angle: the landing</div>
+<p>The three rooms run at the same time, so split the crew into three teams of two to five. A team that finishes its room can help another one. The main computer only wakes up when all six room systems are green.</p>
+
+<h3>Locks (optional)</h3>
+<p>The screen checks every code, so you don't need locks. If you have them, they make it feel real:</p>
+<table>
+  <tr><th>Lock</th><th>Code</th><th>What's inside</th></tr>
+  <tr><td>Metal box, 3-digit lock</td><td>245</td><td>The three room cards, the rope for the engine lift and the wiring diagram</td></tr>
+  <tr><td>Plastic box, 4-digit lock</td><td>1183</td><td rowspan="2">The re-entry card and a protractor. Both locks must open, so the Fuel Bay and the main computer both matter</td></tr>
+  <tr><td>Plastic box, 5-digit lock</td><td>11000</td></tr>
+</table>
+<p>If your equipment gives different numbers (your gears have other tooth counts, your pulleys hold the engine with three pieces of rope), change the codes on the ship computer's setup screen so the screen agrees with your room. The settings stay in the page's address, so bookmark it.</p>
+
+<h2 id="ways">Three ways to run it</h2>
+<h3>The full room</h3>
+<p>What I ran on the Spokes ride: one crew of 6 to 15, the stations spread around the room, real pulleys, gears and water, and locks if you have them. Everything in this guide is written for it first.</p>
+<h3>The table kit</h3>
+<p>A whole class of 25 to 35 at once, in 4 to 6 crews of five or six. Each crew gets a box with its own cards, wiring diagram, rope drawing, captain's log, a ruler, coins and a measuring cup. The pulleys, gears, fuel tank and rubber bands can be stations that crews visit in turn, or the paper versions. No locks: on the ship computer's setup screen, pick The table kit and type the crews' names. Each crew gets its own lane on the screen, fixes its own ship, and lands on its own; the last screen lists every crew's time.</p>
+<p>Envelopes stand in for the boxes. Put the room cards and the wiring diagram in one marked "Open when gravity is green", and the re-entry card in one marked "Open when the main computer is green". The screen shows each crew when it can open the next one.</p>
+<h3>Paper only</h3>
+<p>No materials at all, for a substitute day or a school with no budget. The Officer and Commander cards already carry every number they need, so crews skip the hands-on part. At Cadet level, give each crew the card called The last crew's notes, which has what a crew saw at each hands-on station. Print the paper gears, and have crews trace the wiring paths with a pencil. Run the screen as The table kit, or as one crew with the whole class.</p>
+
+<h2>What you need</h2>
+<table>
+  <tr><th>Station</th><th>Things</th><th>No budget?</th></tr>
+  <tr><td>Artificial gravity</td><td>The switch card; a ball or toy car</td><td>Just the card</td></tr>
+  <tr><td>Engine lift</td><td>Paracord or string, one big pulley, one two-track pulley, two metal eyeholes (or a sturdy hook), a small box as the engine part</td><td>The diagram on the card; string looped over a broom handle</td></tr>
+  <tr><td>Engine gears</td><td>Two gears that mesh (12 and 48 teeth) or a gear kit</td><td>Print the two gears, cut them out and pin them to cardboard</td></tr>
+  <tr><td>Fuel tank</td><td>A clear box or bottle with a line marked at 5 cups, a measuring cup, water with food dye, a tray for spills</td><td>Plain water and any bottle</td></tr>
+  <tr><td>Fuel balance</td><td>A 30 cm ruler, a pencil to balance it on, coins or washers (about 3 g each) or small weights</td><td>The ruler and coins from a desk drawer</td></tr>
+  <tr><td>Navigation wiring</td><td>An electronics kit: a battery, four lamps or LEDs labeled 8, 4, 2 and 1, one switch, wires</td><td>The diagram on the card; students trace the paths with a pencil</td></tr>
+  <tr><td>Thrusters</td><td>A wooden tray or a book on a smooth floor, rubber bands, 4 weak springs, two chairs to stretch the bands between</td><td>A rubber band and a pencil eraser</td></tr>
+  <tr><td>Main computer</td><td>The ship computer on a projector or a laptop</td><td>The coded message written on the board</td></tr>
+  <tr><td>Re-entry</td><td>The re-entry card, a calculator</td><td>The card</td></tr>
+</table>
+<p>For the room: tape construction paper over the windows and on the walls, label three corners Engine Room, Fuel Bay and Navigation, and put the ship computer at the front as the Bridge. A red bike light for when gravity goes off is a nice touch.</p>
+<p>Safety: food dye stains, so use a tray. Keep rubber bands and springs pointed at the floor, never at faces. The "dangerous gaseous fuel" in the red box is only in the story; nothing in this room is under pressure.</p>
+
+<h2>The Admiral's briefing</h2>
+<p>Read this as the Admiral. It takes about three minutes.</p>
+<div class="script">
+<p>Cadets, welcome aboard the StS Sentinel. My name is Admiral [your name], and today you finish your training: you're going to land this ship.</p>
+<p>It's not easy to land a spaceship. To get home you need four things to go right: a full fuel tank, working artificial gravity, the right speed, and the right angle when you hit the top of Earth's atmosphere. Come in too steep and the air heats the ship until the shield fails. Come in too shallow and the air bounces you back into space like a stone skipping on a lake.</p>
+<p>To do any of this, you'll need the three laws Isaac Newton wrote down over 300 years ago. One: things keep doing what they're doing, sitting still or moving in a straight line, until a force changes it. Two: the bigger the force, the faster something speeds up, and the heavier it is, the harder it is to speed up. Three: every push has an equal push back the other way.</p>
+<p>We're almost 400,000 kilometers out, on our way home, and...</p>
+</div>
+<p>Turn off the lights and press Start on the ship computer. Then:</p>
+<div class="script"><p>Meteor strike! We've lost gravity! Everything on this ship is floating. Cadets, the switch panel by the door controls the gravity. Get it back on, and the ship's computer will tell you what's broken next.</p></div>
+
+<h2>The stations</h2>
+<p>Each station has a card the crew reads (the words in the shaded box), the answer, the physics in plain words, and three hints. The ship computer shows the same hints when a crew asks: a nudge, a strong hint, then the answer.</p>
+
+<div class="station" id="gravity">
+  <h3>1. Artificial gravity</h3><div class="room">The Bridge · Newton's first law</div>
+  <dl>
+    <dt>Set up</dt><dd>The switch card taped by the door with six numbered switches drawn on it, a ball or a toy car next to it.</dd>
+    <dt>The card says</dt><dd class="cardtext">GRAVITY OFFLINE. Only the switches that are true will turn it back on. Type the numbers of the true switches, in order.<br>1. With gravity off, a dropped pen still falls to the floor.<br>2. A floating wrench keeps drifting in a straight line until something stops it.<br>3. Heavy things start moving on their own, with no push.<br>4. When the ship speeds up, loose things seem to slide toward the back.<br>5. A full fuel can is harder to get moving than an empty one, even with no gravity.<br>6. In space, a moving thing slows down by itself after a while.</dd>
+    <dt>Answer</dt><dd class="answer">245</dd>
+    <dt>The physics</dt><dd>Newton's first law: things keep doing what they're doing until a force acts on them. Mass is how hard something is to get moving, and that doesn't need gravity (switch 5). Switch 4 is the feeling of being pushed back into your seat in a car that speeds up.</dd>
+    <dt>Hints</dt><dd><ol class="hints"><li>Read each switch out loud. Does it match what happens on a skateboard when the board stops?</li><li>Without gravity, nothing slows down or speeds up unless something pushes it. Three switches are true.</li><li>Switches 2, 4 and 5 are true. The code is 245.</li></ol></dd>
+    <dt>Then</dt><dd>Lights on. The code also opens the metal box with the room cards and the rope.</dd>
+  </dl>
+</div>
+
+<div class="station" id="lift">
+  <h3>2. Engine lift</h3><div class="room">Engine Room · pulleys and mechanical advantage</div>
+  <dl>
+    <dt>Set up</dt><dd>Hang the big pulley from one eyehole and the two-track pulley on the engine part (a small box). Leave the rope in the metal box. The card has a drawing of the rope going back and forth so that four pieces of rope hold the engine.</dd>
+    <dt>The card says</dt><dd class="cardtext">The engine block came loose in the strike. It weighs 120 newtons, too heavy to hold up by hand for long. Rig the rope like the drawing so that 4 pieces of rope hold the engine. The pieces share the weight. How many newtons must you pull with to hold the engine up?</dd>
+    <dt>Answer</dt><dd class="answer">30</dd>
+    <dt>The physics</dt><dd>Each piece of rope holding the load carries an equal share, so 4 pieces means you pull with a quarter of the weight: 120 ÷ 4 = 30 newtons. The catch: to lift the engine 10 cm you have to pull 40 cm of rope. You trade distance for force. Have the crew measure it.</dd>
+    <dt>Hints</dt><dd><ol class="hints"><li>Count the pieces of rope that go up from the engine part to the pulleys.</li><li>The pieces share the weight. Four pieces hold 120 newtons, so each holds a quarter.</li><li>120 newtons shared by 4 pieces of rope is 30 newtons. The code is 30.</li></ol></dd>
+    <dt>If yours differ</dt><dd>With 3 pieces of rope the answer is 40 newtons. Change the code on the setup screen, and change the cipher shift to 3 as well (the main computer uses this number).</dd>
+  </dl>
+</div>
+
+<div class="station" id="gears">
+  <h3>3. Engine gears</h3><div class="room">Engine Room · gears and torque</div>
+  <dl>
+    <dt>Set up</dt><dd>Two meshing gears on a board: a small one (12 teeth) with a mark on it and a big one (48 teeth).</dd>
+    <dt>The card says</dt><dd class="cardtext">To restart the engine, the big gear must turn exactly 5 full times. The starter motor can only turn the small gear. How many times must the small gear turn?</dd>
+    <dt>Answer</dt><dd class="answer">20</dd>
+    <dt>The physics</dt><dd>The big gear has 4 times as many teeth (48 ÷ 12), so the small gear turns 4 times for each turn of the big one: 5 × 4 = 20. The big gear turns slower but with 4 times the twisting force (torque). That's why a bike's lowest gear makes hills easier.</dd>
+    <dt>Hints</dt><dd><ol class="hints"><li>Turn the small gear once and watch how far the big gear goes.</li><li>The big gear has 48 teeth and the small one has 12, so the big gear turns once for every 4 turns of the small one.</li><li>5 turns of the big gear need 5 times 4 turns of the small gear. The code is 20.</li></ol></dd>
+    <dt>If yours differ</dt><dd>The answer is 5 × (big teeth ÷ small teeth).</dd>
+  </dl>
+</div>
+
+<div class="station" id="tank">
+  <h3>4. Fuel tank</h3><div class="room">Fuel Bay · volume and units</div>
+  <dl>
+    <dt>Set up</dt><dd>The clear tank (a box or bottle) with a fill line, a measuring cup, a jug of water with food dye, a tray.</dd>
+    <dt>The card says</dt><dd class="cardtext">ROBOT PROTOCOL 65: before landing, the fuel tank must be full. It holds exactly 5 cups. Refill it to the line. The ship's computer measures fuel in milliliters, and 1 cup is 236.6 milliliters. How many milliliters of fuel go in the tank? Round to the nearest milliliter.</dd>
+    <dt>Answer</dt><dd class="answer">1183</dd>
+    <dt>The physics</dt><dd>5 × 236.6 = 1183 mL. Real spacecraft are fussy about units: in 1999 NASA lost the Mars Climate Orbiter because one team's software worked in pounds of force and another's in newtons.</dd>
+    <dt>Hints</dt><dd><ol class="hints"><li>Protocol 65 says the tank holds exactly 5 cups. The computer counts in milliliters.</li><li>One cup is 236.6 milliliters. Multiply by 5.</li><li>5 times 236.6 is 1183. The code is 1183.</li></ol></dd>
+    <dt>Then</dt><dd>This is also the 4-digit lock on the plastic box.</dd>
+  </dl>
+</div>
+
+<div class="station" id="balance">
+  <h3>5. Fuel balance</h3><div class="room">Fuel Bay · balance and center of mass</div>
+  <dl>
+    <dt>Set up</dt><dd>A 30 cm ruler balanced at its middle (the 15 cm mark) on a pencil, with a stack of coins or washers. The card's tanks are too far out for a desk ruler, so the crew tries a smaller version first: 3 coins 8 cm left of the middle balance 4 coins 6 cm to the right.</dd>
+    <dt>The card says</dt><dd class="cardtext">The ship tips if its fuel isn't balanced. The left tank (300 g) sits 20 cm from the middle. The right tank weighs 400 g. How many centimeters from the middle must the right tank go so the ship balances? Try it on the ruler first.</dd>
+    <dt>Answer</dt><dd class="answer">15</dd>
+    <dt>The physics</dt><dd>A seesaw balances when weight × distance is the same on both sides: 300 × 20 = 6000, and 6000 ÷ 400 = 15 cm. The heavier tank sits closer to the middle, the same as the coins on the ruler (3 × 8 = 4 × 6).</dd>
+    <dt>Hints</dt><dd><ol class="hints"><li>A heavy thing close to the middle can balance a light thing far away. Try it on the ruler.</li><li>Weight times distance must match on both sides: 300 g at 20 cm makes 6000.</li><li>6000 divided by 400 g is 15 cm. The code is 15.</li></ol></dd>
+  </dl>
+</div>
+
+<div class="station" id="wiring">
+  <h3>6. Navigation wiring</h3><div class="room">Navigation · circuits</div>
+  <dl>
+    <dt>Set up</dt><dd>The electronics kit and the wiring diagram (in the metal box). The diagram shows a battery with three paths side by side: path A has lamp 8; path B has lamp 4 and an open switch; path C has lamps 2 and 1, one after the other.</dd>
+    <dt>The card says</dt><dd class="cardtext">The navigation wire was knocked loose. Build the backup circuit exactly as the diagram shows. The navigation code is the lamps that light: add up their numbers.</dd>
+    <dt>Answer</dt><dd class="answer">11</dd>
+    <dt>The physics</dt><dd>Electricity needs a complete loop. The open switch breaks path B, so lamp 4 stays off; paths A and C are complete, so lamps 8, 2 and 1 light: 8 + 2 + 1 = 11. Paths side by side (parallel) keep working when one breaks, which is how a house is wired. For a crew that's fast, point out that the lit lamps read 1011, which is 11 in binary, the way computers count.</dd>
+    <dt>Hints</dt><dd><ol class="hints"><li>Build the circuit exactly as the diagram shows, then look at which lamps are on.</li><li>A gap in a path turns off everything on that path. The other paths still work.</li><li>Lamps 8, 2 and 1 light; lamp 4 is on the path with the open switch. 8 + 2 + 1 = 11. The code is 11.</li></ol></dd>
+  </dl>
+</div>
+
+<div class="station" id="thrusters">
+  <h3>7. Thrusters</h3><div class="room">Navigation · Newton's second and third laws</div>
+  <dl>
+    <dt>Set up</dt><dd>Rubber bands stretched between two chair legs, the wooden tray on a smooth floor in front of them, the springs.</dd>
+    <dt>The card says</dt><dd class="cardtext">PSHH! The steering thrusters need testing. Launch the tray with 1 rubber band, then with 3. Which went faster? Now the real thing: a thruster pushes the 3 kg landing pod with 12 newtons. What is the pod's acceleration, in meters per second each second?</dd>
+    <dt>Answer</dt><dd class="answer">4</dd>
+    <dt>The physics</dt><dd>Newton's second law: acceleration = force ÷ mass = 12 ÷ 3 = 4 m/s². More rubber bands push harder and the tray speeds up more. Third law: a real thruster throws gas backward and the gas pushes the ship forward. Ask the crew which way the tray pushed the bands.</dd>
+    <dt>Hints</dt><dd><ol class="hints"><li>Launch the tray with one rubber band, then with three. Which one goes faster?</li><li>Newton's second law: force = mass times acceleration, so acceleration = force divided by mass.</li><li>12 newtons divided by 3 kilograms is 4. The code is 4.</li></ol></dd>
+  </dl>
+</div>
+
+<div class="station" id="computer">
+  <h3>8. Main computer</h3><div class="room">The Bridge · codes</div>
+  <dl>
+    <dt>Set up</dt><dd>Nothing. When all six room systems are green, the main computer on the screen shows the Admiral's coded message.</dd>
+    <dt>The screen says</dt><dd class="cardtext">IRXVC WTIIH IPIZIR XLSYWERH<br>(The key: count the pieces of rope that hold up the engine. Move each letter that many places back in the alphabet.)</dd>
+    <dt>Answer</dt><dd class="answer">11000 (the message reads ENTRY SPEED ELEVEN THOUSAND)</dd>
+    <dt>The physics</dt><dd>A spacecraft coming home from the Moon hits the air at about 11,000 meters per second, over 30 times the speed of sound. Apollo capsules did. That speed is why the angle matters so much.</dd>
+    <dt>Hints</dt><dd><ol class="hints"><li>Each letter on the screen has been moved forward in the alphabet. The key is the number of rope pieces holding the engine.</li><li>Move each letter back 4 places: I becomes E, R becomes N.</li><li>The message says ENTRY SPEED ELEVEN THOUSAND. The code is 11000.</li></ol></dd>
+    <dt>Then</dt><dd>This is also the 5-digit lock on the plastic box. With the fuel code (1183), the box opens and the crew gets the re-entry card.</dd>
+  </dl>
+</div>
+
+<div class="station" id="reentry">
+  <h3>9. Re-entry angle</h3><div class="room">The Bridge · trajectory and angle</div>
+  <dl>
+    <dt>Set up</dt><dd>The re-entry card in the plastic box, and a calculator.</dd>
+    <dt>The card says</dt><dd class="cardtext">The Sentinel's heat shield is safe between 5.2° and 7.2°. Steeper than 7.2° and the ship burns up. Shallower than 5.2° and it skips off the air back into space. Navigation has three paths. For small angles, the angle in degrees is about 57 × the drop ÷ the distance forward.<br>Path A: drops 3 km over 95 km forward.<br>Path B: drops 10 km over 95 km forward.<br>Path C: drops 20 km over 95 km forward.<br>Work out all three, pick the safe one, and type its angle into the ship computer.</dd>
+    <dt>Answer</dt><dd class="answer">6 (Path B: 57 × 10 ÷ 95 = 6.0°). Path A is 1.8° and skips off; Path C is 12° and burns up.</dd>
+    <dt>The physics</dt><dd>Re-entry is a narrow window. Too steep and the ship slows down too hard in thick air and overheats. Too shallow and it never gets deep enough for the air to grab it. Apollo capsules aimed for about 6.5°. (The 57 comes from 180 ÷ π, which turns a slope into degrees when the angle is small.)</dd>
+    <dt>Hints</dt><dd><ol class="hints"><li>Work out the angle for all three paths on the card, then pick the one inside the safe window.</li><li>Angle is about 57 times the drop, divided by the distance forward. Path B drops 10 km over 95 km.</li><li>57 times 10 divided by 95 is 6.0 degrees: Path B. Type 6.</li></ol></dd>
+    <dt>Then</dt><dd>The screen plays the landing. Any angle in the window lands; a wrong one shows the ship skipping off or burning up, and the crew can try again. The last screen shows the crew's time, hints and tries, and prints.</dd>
+  </dl>
+</div>
+
+<!-- levels:start (written by make-levels.mjs from LEVEL_STATIONS in ../ship/ship.js; change that, not this) -->
+<h2 id="levels">Cadet and Commander</h2>
+<p>Everything above is the Officer level (grades 6 to 9). The other two levels use the same room, props and story; only the questions change. Pick the level on the ship computer's setup screen, and its codes and hints change with it. Artificial gravity and the main computer are the same at every level.</p>
+<p><b>Cadet</b> (grades 4 to 6): observe, measure and count, with no equations. Print <a href="../print/cards-cadet.html">the Cadet crew cards</a>. <b>Commander</b> (high school physics): the real equations. Print <a href="../print/cards-commander.html">the Commander crew cards</a>, which come with a formula card.</p>
+<p>Using locks? The metal box (245) and the 5-digit lock (11000) don't change. Set the 4-digit lock to the fuel tank code with zeros in front: 0005 for Cadet, 0237 for Commander. The screen takes the code either way.</p>
+<h3 class="lvl">Cadet: grades 4 to 6</h3>
+<div class="station" id="cadet-lift">
+  <h3>Engine lift</h3><div class="room">Engine Room · Cadet</div>
+  <dl>
+    <dt>The card says</dt><dd class="cardtext">The engine block came loose in the strike. Rig the rope like the drawing so that 4 pieces of rope hold the engine. Put a piece of tape on the rope where it leaves your hand. Pull until the engine rises 10 cm, then measure how far the tape moved. How many centimeters of rope did you pull?</dd>
+    <dt>Answer</dt><dd class="answer">40</dd>
+    <dt>Hints</dt><dd><ol class="hints"><li>Use a ruler to see how high the engine goes. Stop when it has gone up 10 cm.</li><li>Each of the 4 pieces of rope gets 10 cm shorter, so you pull more rope than the engine moves.</li><li>4 pieces of rope times 10 cm is 40 cm of rope. The code is 40.</li></ol></dd>
+    <dt>On paper</dt><dd>Engine lift: pulled 8 cm of rope, the engine rose 2 cm. Pulled 20 cm, it rose 5 cm. Pulled 32 cm, it rose 8 cm.</dd>
+  </dl>
+</div>
+<div class="station" id="cadet-gears">
+  <h3>Engine gears</h3><div class="room">Engine Room · Cadet</div>
+  <dl>
+    <dt>The card says</dt><dd class="cardtext">To restart the engine, the big gear must turn all the way around once. The starter motor can only turn the small gear. Turn the small gear and count its turns until the big gear has gone around once. How many times did the small gear turn?</dd>
+    <dt>Answer</dt><dd class="answer">4</dd>
+    <dt>Hints</dt><dd><ol class="hints"><li>Put a pencil mark on each gear so you can see when it has gone all the way around.</li><li>Count out loud each time the small gear's mark comes back to the top.</li><li>The small gear turns 4 times for one turn of the big gear. The code is 4.</li></ol></dd>
+    <dt>On paper</dt><dd>Engine gears: no gears? Use the paper gears. The big gear has 48 teeth and the small one has 12. Each turn of the small gear moves the big gear along by 12 teeth.</dd>
+  </dl>
+</div>
+<div class="station" id="cadet-tank">
+  <h3>Fuel tank</h3><div class="room">Fuel Bay · Cadet</div>
+  <dl>
+    <dt>The card says</dt><dd class="cardtext">ROBOT PROTOCOL 65: before landing, the fuel tank must be full. Fill it to the line with the measuring cup, one full cup at a time. How many cups does it take?</dd>
+    <dt>Answer</dt><dd class="answer">5</dd>
+    <dt>Hints</dt><dd><ol class="hints"><li>Fill the cup all the way each time, pour it in, and count.</li><li>Stop when the water reaches the line. Don't go over.</li><li>The tank holds 5 cups. The code is 5.</li></ol></dd>
+    <dt>On paper</dt><dd>Fuel tank: after 1 cup the tank was one fifth full. After 2 cups it was two fifths full.</dd>
+  </dl>
+</div>
+<div class="station" id="cadet-balance">
+  <h3>Fuel balance</h3><div class="room">Fuel Bay · Cadet</div>
+  <dl>
+    <dt>The card says</dt><dd class="cardtext">The ship tips if its fuel isn't balanced. Put 3 coins on the ruler 8 cm to the left of the middle. Slide a stack of 4 coins along the right side until the ruler balances. How many centimeters from the middle is the stack?</dd>
+    <dt>Answer</dt><dd class="answer">6</dd>
+    <dt>Hints</dt><dd><ol class="hints"><li>Measure from the middle of the ruler (the 15 cm mark), not from the end.</li><li>The heavier stack has to sit closer to the middle than the lighter one.</li><li>The 4 coins balance 6 cm from the middle. The code is 6.</li></ol></dd>
+    <dt>On paper</dt><dd>Fuel balance: 4 coins at 4 cm, the left side went down. At 6 cm, the ruler was level. At 8 cm, the right side went down.</dd>
+  </dl>
+</div>
+<div class="station" id="cadet-wiring">
+  <h3>Navigation wiring</h3><div class="room">Navigation · Cadet</div>
+  <dl>
+    <dt>The card says</dt><dd class="cardtext">The navigation wire was knocked loose. Build the backup circuit exactly as the diagram shows. How many lamps light up?</dd>
+    <dt>Answer</dt><dd class="answer">3</dd>
+    <dt>Hints</dt><dd><ol class="hints"><li>Build the circuit exactly as the diagram shows, then look at which lamps are on.</li><li>Electricity has to go all the way around a path and back to the battery. An open switch is a gap.</li><li>Lamps 8, 2 and 1 light; lamp 4 stays dark. The code is 3.</li></ol></dd>
+    <dt>On paper</dt><dd>Navigation wiring: no kit? Trace each path on the diagram with a pencil, from the battery and back. A lamp lights only if your pencil gets all the way around without crossing a gap.</dd>
+  </dl>
+</div>
+<div class="station" id="cadet-thrusters">
+  <h3>Thrusters</h3><div class="room">Navigation · Cadet</div>
+  <dl>
+    <dt>The card says</dt><dd class="cardtext">PSHH! The steering thrusters need testing. Launch the tray with 1 rubber band, then with 2, then with 3. Measure how far it slides each time. How many rubber bands sent it the farthest?</dd>
+    <dt>Answer</dt><dd class="answer">3</dd>
+    <dt>Hints</dt><dd><ol class="hints"><li>Pull the tray back the same distance every time so the test is fair.</li><li>More rubber bands push harder.</li><li>3 rubber bands push the hardest and send the tray the farthest. The code is 3.</li></ol></dd>
+    <dt>On paper</dt><dd>Thrusters: with 1 rubber band the tray slid 40 cm. With 2 it slid 90 cm. With 3 it slid 150 cm.</dd>
+  </dl>
+</div>
+<div class="station" id="cadet-reentry">
+  <h3>Re-entry angle</h3><div class="room">The Bridge · Cadet</div>
+  <dl>
+    <dt>The card says</dt><dd class="cardtext">The Sentinel's heat shield is safe between 5.2° and 7.2°. Steeper than 7.2° and the ship burns up. Shallower than 5.2° and it skips off the air back into space. Navigation has three paths. Path A goes in at 2°. Path B goes in at 6°. Path C goes in at 12°. Pick the safe path and type its angle into the ship computer.</dd>
+    <dt>Answer</dt><dd class="answer">6 (any angle from 5.2° to 7.2° lands)</dd>
+    <dt>Hints</dt><dd><ol class="hints"><li>Safe means more than 5.2 and less than 7.2.</li><li>Path A is too shallow and Path C is too steep.</li><li>Path B, at 6 degrees, is the safe one. Type 6.</li></ol></dd>
+  </dl>
+</div>
+<h3 class="lvl">Commander: high school physics</h3>
+<div class="station" id="commander-lift">
+  <h3>Engine lift</h3><div class="room">Engine Room · Commander</div>
+  <dl>
+    <dt>The card says</dt><dd class="cardtext">The engine block came loose in the strike. It weighs 120 newtons. Rig the rope like the drawing so that 4 pieces of rope hold it, then lift it 0.5 m. Find the force you pull with and how much rope you pull. The work you do is that force times that distance. How many joules of work does it take?</dd>
+    <dt>Answer</dt><dd class="answer">60</dd>
+    <dt>Hints</dt><dd><ol class="hints"><li>Four pieces of rope share the weight, and each one gets 0.5 m shorter.</li><li>You pull with 120 ÷ 4 = 30 newtons, over 4 × 0.5 = 2 m of rope.</li><li>30 newtons times 2 m is 60 joules, the same as lifting 120 newtons by 0.5 m by hand. The code is 60.</li></ol></dd>
+  </dl>
+</div>
+<div class="station" id="commander-gears">
+  <h3>Engine gears</h3><div class="room">Engine Room · Commander</div>
+  <dl>
+    <dt>The card says</dt><dd class="cardtext">To restart the engine, the big gear (48 teeth) has to twist hard. The starter motor turns the small gear (12 teeth) with a torque of 3.5 newton meters. What torque does the big gear give the engine, in newton meters? Leave out friction.</dd>
+    <dt>Answer</dt><dd class="answer">14</dd>
+    <dt>Hints</dt><dd><ol class="hints"><li>Where the teeth meet, the gears push on each other with the same force. Torque is that force times the gear's radius.</li><li>The big gear's radius is 4 times the small one's (48 teeth ÷ 12 teeth), so its torque is 4 times as big.</li><li>3.5 newton meters times 4 is 14 newton meters. The code is 14.</li></ol></dd>
+  </dl>
+</div>
+<div class="station" id="commander-tank">
+  <h3>Fuel tank</h3><div class="room">Fuel Bay · Commander</div>
+  <dl>
+    <dt>The card says</dt><dd class="cardtext">ROBOT PROTOCOL 65: refill the tank to the line. It holds exactly 5 cups (1183 mL) of fuel vapor at 100 kPa. Before landing, the pump squeezes all of it into the 500 mL landing tank at the same temperature. What is the pressure in the landing tank, in kPa? Round to the nearest kPa.</dd>
+    <dt>Answer</dt><dd class="answer">237</dd>
+    <dt>Hints</dt><dd><ol class="hints"><li>At the same temperature, pressure times volume stays the same: P1 × V1 = P2 × V2 (Boyle's law).</li><li>100 kPa × 1183 mL = P2 × 500 mL.</li><li>P2 = 118,300 ÷ 500 = 236.6, which rounds to 237 kPa. The code is 237.</li></ol></dd>
+  </dl>
+</div>
+<div class="station" id="commander-balance">
+  <h3>Fuel balance</h3><div class="room">Fuel Bay · Commander</div>
+  <dl>
+    <dt>The card says</dt><dd class="cardtext">The ship tips if its fuel isn't balanced. The left tank (300 g) sits 20 cm from the middle, and a 200 g sensor is bolted 30 cm out on the same side. The right tank weighs 400 g. How many centimeters from the middle must the right tank go so the torques balance? Try a smaller version on the ruler first.</dd>
+    <dt>Answer</dt><dd class="answer">30</dd>
+    <dt>Hints</dt><dd><ol class="hints"><li>Each mass makes a torque: its weight times its distance from the middle. Add up the torques on each side.</li><li>Left side: 300 × 20 + 200 × 30 = 12,000 gram centimeters.</li><li>12,000 ÷ 400 = 30 cm. The code is 30.</li></ol></dd>
+  </dl>
+</div>
+<div class="station" id="commander-wiring">
+  <h3>Navigation wiring</h3><div class="room">Navigation · Commander</div>
+  <dl>
+    <dt>The card says</dt><dd class="cardtext">The navigation wire was knocked loose. Build the backup circuit exactly as the diagram shows. The battery gives 9 volts and every lamp is 6 ohms. How much current flows through path C, in milliamps?</dd>
+    <dt>Answer</dt><dd class="answer">750</dd>
+    <dt>Hints</dt><dd><ol class="hints"><li>Paths side by side each get the battery's full 9 volts. Look at path C on its own.</li><li>Path C has two 6 ohm lamps one after the other, so it has 12 ohms. Current = voltage ÷ resistance.</li><li>9 volts ÷ 12 ohms = 0.75 amps, which is 750 milliamps. The code is 750.</li></ol></dd>
+  </dl>
+</div>
+<div class="station" id="commander-thrusters">
+  <h3>Thrusters</h3><div class="room">Navigation · Commander</div>
+  <dl>
+    <dt>The card says</dt><dd class="cardtext">PSHH! The steering thrusters need testing. Launch the tray with 1 rubber band, then with 3, and feel which way the bands push back. Now the real thing: the 3 kg landing pod sits still, then a thruster throws 0.2 kg of gas backward at 150 m/s. How fast does the pod move forward, in meters per second?</dd>
+    <dt>Answer</dt><dd class="answer">10</dd>
+    <dt>Hints</dt><dd><ol class="hints"><li>Newton's third law: the gas pushes the pod as hard as the pod pushes the gas, so their momentum (mass × speed) is equal and opposite.</li><li>The gas carries 0.2 × 150 = 30 kilogram meters per second backward.</li><li>30 ÷ 3 kg = 10 m/s forward. The code is 10.</li></ol></dd>
+  </dl>
+</div>
+<div class="station" id="commander-reentry">
+  <h3>Re-entry angle</h3><div class="room">The Bridge · Commander</div>
+  <dl>
+    <dt>The card says</dt><dd class="cardtext">The Sentinel's heat shield is safe between 5.2° and 7.2°. Steeper than 7.2° and the ship burns up. Shallower than 5.2° and it skips off the air back into space. The ship moves at 11,000 m/s along its path, and each path has its own speed straight down. The sine of the angle below level is the speed down ÷ the speed along the path. Path A: 350 m/s down. Path B: 1,150 m/s down. Path C: 2,300 m/s down. Work out all three, pick the safe one, and type its angle.</dd>
+    <dt>Answer</dt><dd class="answer">6 (any angle from 5.2° to 7.2° lands)</dd>
+    <dt>Hints</dt><dd><ol class="hints"><li>sin(angle) = speed down ÷ speed along the path. Use the inverse sine button on the calculator.</li><li>Path B: 1,150 ÷ 11,000 = 0.1045.</li><li>The inverse sine of 0.1045 is 6.0 degrees: Path B. Type 6.</li></ol></dd>
+  </dl>
+</div>
+<!-- levels:end -->
+
+<h2>Debrief</h2>
+<p>Go back through the stations in order and ask the crew who solved each one to explain it in one sentence. Then use these as an exit ticket (pick three):</p>
+<ol>
+  <li>An astronaut lets go of a pen inside a ship with no gravity. What does the pen do, and why?</li>
+  <li>With 4 pieces of rope holding the engine, you pull with a quarter of the force. What do you give up in return?</li>
+  <li>A small gear with 10 teeth drives a big gear with 30 teeth. How many turns of the small gear make the big one turn twice?</li>
+  <li>Why does a fuel tank need its units checked?</li>
+  <li>A 2 kg tank sits 30 cm from the middle. Where does a 3 kg tank go to balance it?</li>
+  <li>One lamp in your house burns out and the others stay on. Are they wired one after another or side by side?</li>
+  <li>The same thruster pushes a heavier pod. Does it speed up faster or slower? Which of Newton's laws says so?</li>
+  <li>What happens to a spaceship that comes into the atmosphere too steep? Too shallow?</li>
+</ol>
+<p>Answers: (1) it floats in place or keeps drifting the way it was going, since nothing pushes it (first law); (2) distance: you pull 4 times as much rope; (3) 6; (4) a wrong unit means the wrong amount of fuel; (5) 20 cm; (6) side by side; (7) slower, the second law; (8) too steep, it overheats; too shallow, it skips back to space.</p>
+
+<h2>Running it again</h2>
+<p>Between classes (about 5 minutes): switch the gravity card back, unhook the rope and put it in the metal box with the wiring diagram, empty the fuel tank into the jug, take the coins off the ruler, take apart the circuit, lock both boxes, and press New mission on the ship computer.</p>
+<p>Changing the codes keeps a second class from learning them from the first. On the setup screen, change any code and write the new one on that station's card.</p>
+
+<p class="small" style="color:var(--dim);margin-top:40px">How to Land a Spaceship, by Ethan David Magalei. Built for Stanford Spokes 2024. Free to use, copy and change.</p>
+
+</main>
+<script>document.querySelectorAll('[data-print]').forEach(function(b){b.addEventListener('click',function(){window.print();});});</script>
+</body>
+</html>

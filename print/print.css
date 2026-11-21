@@ -1,0 +1,52 @@
+/* How to Land a Spaceship: the printables (2026-10-17). Shared by every page in this folder.
+   US Letter, black and white. Each .sheet is one sheet of paper; the page's own <style> sets @page size
+   (portrait or landscape). The PDFs in ../kit/ are made from these pages with headless Chrome. */
+* { box-sizing: border-box; }
+html, body { margin: 0; color: #000; background: #fff; }
+body { font: 13pt/1.4 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.mono, .tag, .code { font-family: ui-monospace, Menlo, Consolas, "Courier New", monospace; }
+h1, h2, h3 { margin: 0; line-height: 1.1; }
+svg { display: block; }
+svg text { font-family: ui-monospace, Menlo, Consolas, "Courier New", monospace; }
+
+/* One sheet of paper. Portrait by default; .land for landscape pages. */
+.sheet { position: relative; width: 8.5in; height: 10.98in; padding: .5in; overflow: hidden; break-after: page; page-break-after: always; display: flex; flex-direction: column; }
+.sheet.land { width: 11in; height: 8.48in; }
+.sheet:last-of-type { break-after: auto; page-break-after: auto; }
+
+/* The ship frame: a heavy border with a label strip, like a panel on the Sentinel. */
+.frame { flex: 1; border: 3pt solid #000; border-radius: 14pt; padding: .3in .35in; display: flex; flex-direction: column; position: relative; min-height: 0; }
+.frame::before, .frame::after { content: ""; position: absolute; width: 22pt; height: 22pt; border: 1.5pt solid #000; }
+.frame::before { top: 6pt; left: 6pt; border-right: 0; border-bottom: 0; border-radius: 8pt 0 0 0; }
+.frame::after { bottom: 6pt; right: 6pt; border-left: 0; border-top: 0; border-radius: 0 0 8pt 0; }
+.tag { font-size: 9.5pt; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; }
+.foot { margin-top: auto; padding-top: 8pt; font-size: 8.5pt; color: #333; display: flex; justify-content: space-between; gap: 12pt; }
+.rule { border-top: 1.5pt solid #000; margin: 8pt 0; }
+
+/* Half sheets (two cards to a page) with a dashed cut line between them. */
+.half { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+.half + .half, .cut + .half { margin-top: .5in; }
+.cut { position: absolute; left: 0; right: 0; top: 50%; border-top: 1pt dashed #000; }
+.cut span { position: absolute; left: .5in; top: -8pt; background: #fff; padding: 0 6pt; font-size: 8pt; letter-spacing: .1em; }
+
+/* Lines to write on. */
+.write { border-bottom: 1pt solid #000; height: 26pt; }
+.box { border: 1.5pt solid #000; border-radius: 6pt; }
+.digits { display: inline-flex; gap: 4pt; vertical-align: middle; }
+.digits i { display: inline-block; width: 24pt; height: 30pt; border: 1.5pt solid #000; border-radius: 4pt; }
+
+/* On screen: paper on a grey desk, with a small bar to print. Hidden when printing. */
+.bar { display: none; }
+@media screen {
+  html { background: #d6d8dc; }
+  body { background: #d6d8dc; padding: 0 0 40px; }
+  .bar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; position: sticky; top: 0; z-index: 5; background: #11151f; color: #fff; padding: 10px 16px; font-size: 15px; margin-bottom: 24px; }
+  .bar a { color: #9fdcff; }
+  .bar b { margin-right: auto; }
+  .bar button { font: inherit; font-weight: 700; background: #fff; color: #000; border: 0; border-radius: 8px; padding: 7px 14px; cursor: pointer; }
+  .sheet { margin: 0 auto 24px; background: #fff; box-shadow: 0 2px 14px rgba(0, 0, 0, .25); }
+}
+@media screen and (max-width: 900px) { .sheet { zoom: .8; } .sheet.land { zoom: .62; } }
+@media screen and (max-width: 700px) { .sheet { zoom: .55; } .sheet.land { zoom: .43; } }
+@media screen and (max-width: 480px) { .sheet { zoom: .42; } .sheet.land { zoom: .32; } }
+@media print { html, body { background: #fff; } }

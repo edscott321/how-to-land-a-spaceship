@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The card's words (.cardtext) are the guide's
+     Re-entry angle shaded box, word for word, and the window (5.2° to 7.2°) is the ship computer's default;
+     tests/escape-room.test.mjs checks. It goes in the plastic box with a protractor. -->
+<title>Re-entry Card · How to Land a Spaceship</title>
+<link rel="stylesheet" href="print.css">
+<style>
+@page { size: letter portrait; margin: 0; }
+.card h1 { font-size: 34pt; text-transform: uppercase; margin: 6pt 0 10pt; }
+.card .cardtext { font-size: 15pt; line-height: 1.45; }
+.card .cardtext .path { font: 700 15pt/1.6 ui-monospace, Menlo, Consolas, "Courier New", monospace; padding-left: 14pt; }
+.card .cardtext div + div { margin-top: 2pt; }
+.card .cardtext .last { margin-top: 8pt; }
+.card svg { width: 100%; flex: 1; min-height: 0; margin-top: 12pt; }
+</style>
+</head>
+<body>
+<div class="bar"><b>Re-entry card: 1 page, goes in the locked plastic box</b><a href="./">All printables</a><a href="../kit/reentry.pdf">PDF</a><button type="button" data-print>Print</button></div>
+
+<div class="sheet card" data-station="reentry"><div class="frame">
+  <div class="tag">StS Sentinel · System 09 · The Bridge · Re-entry</div>
+  <h1>Coming home</h1>
+  <div class="cardtext"><div>The Sentinel's heat shield is safe between 5.2° and 7.2°. Steeper than 7.2° and the ship burns up. Shallower than 5.2° and it skips off the air back into space. Navigation has three paths. For small angles, the angle in degrees is about 57 × the drop ÷ the distance forward.</div><div class="path">Path A: drops 3 km over 95 km forward.</div><div class="path">Path B: drops 10 km over 95 km forward.</div><div class="path">Path C: drops 20 km over 95 km forward.</div><div class="last">Work out all three, pick the safe one, and type its angle into the ship computer.</div></div>
+  <svg viewBox="0 0 640 330" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round">
+    <!-- the ship and "straight ahead" -->
+    <path d="M40 40 H600" stroke-width="1.5" stroke-dasharray="6 6"/>
+    <text x="604" y="45" font-size="13" fill="#000" stroke="none">level</text>
+    <path d="M18 30 L44 40 L18 50 Q10 40 18 30 Z" fill="#fff" stroke-width="2.5"/>
+    <!-- the three paths, heights stretched -->
+    <path d="M44 40 L580 73" stroke-width="3"/>
+    <path d="M44 40 L580 150" stroke-width="3" stroke-dasharray="14 6"/>
+    <path d="M44 40 L580 260" stroke-width="3" stroke-dasharray="3 7"/>
+    <g font-size="17" font-weight="800" fill="#000" stroke="none"><text x="588" y="80">A</text><text x="588" y="157">B</text><text x="588" y="267">C</text></g>
+    <!-- 95 km forward -->
+    <path d="M44 300 H580 M44 292 V308 M580 292 V308" stroke-width="1.5"/>
+    <text x="312" y="292" font-size="15" font-weight="700" text-anchor="middle" fill="#000" stroke="none">95 KM FORWARD</text>
+    <text x="312" y="324" font-size="12" text-anchor="middle" fill="#000" stroke="none">Drops drawn twice as tall as real so you can see them. The real paths are flatter.</text>
+  </svg>
+  <div class="foot"><span>Type the angle into the ship computer and watch the landing.</span><span>How to Land a Spaceship</span></div>
+</div></div>
+
+<script>document.querySelectorAll('[data-print]').forEach(function(b){b.addEventListener('click',function(){window.print();});});</script>
+</body>
+</html>

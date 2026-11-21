@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The guide's Engine lift station: 4 pieces of rope
+     hold the 120-newton engine, so the code is 30. The same drawing is on the Engine lift card (cards.html). -->
+<title>Rope Drawing · How to Land a Spaceship</title>
+<link rel="stylesheet" href="print.css">
+<style>
+@page { size: letter portrait; margin: 0; }
+.rope h1 { font-size: 30pt; text-transform: uppercase; margin: 6pt 0 4pt; }
+.rope p { margin: 0 0 6pt; font-size: 13pt; }
+.rope svg { width: 100%; flex: 1; min-height: 0; }
+</style>
+</head>
+<body>
+<div class="bar"><b>Rope drawing: 1 page</b><a href="./">All printables</a><a href="../kit/rope.pdf">PDF</a><button type="button" data-print>Print</button></div>
+
+<div class="sheet rope" data-station="lift"><div class="frame">
+  <div class="tag">StS Sentinel · Engine Room · System 02 · Engine lift</div>
+  <h1>Rig the rope like this</h1>
+  <p>Tie one end to the left eyehole. Go down under the first track of the engine's pulley, up over the big pulley, down under the second track, then up through the right eyehole. Pull the free end.</p>
+  <svg viewBox="0 0 560 600" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" data-pieces="4">
+    <!-- the ceiling bar -->
+    <rect x="90" y="16" width="420" height="26" fill="#fff" stroke-width="3"/>
+    <path d="M104 42 L126 16 M144 42 L166 16 M184 42 L206 16 M224 42 L246 16 M264 42 L286 16 M304 42 L326 16 M344 42 L366 16 M384 42 L406 16 M424 42 L446 16 M464 42 L486 16" stroke-width="1.2"/>
+    <!-- eyeholes -->
+    <circle cx="150" cy="54" r="10" stroke-width="3"/><circle cx="430" cy="54" r="10" stroke-width="3"/>
+    <!-- the big pulley, hung from the bar -->
+    <path d="M290 42 V70" stroke-width="5"/>
+    <circle cx="290" cy="130" r="60" fill="#fff" stroke-width="3"/><circle cx="290" cy="130" r="50" stroke-width="1.2"/><circle cx="290" cy="130" r="6" fill="#000"/>
+    <!-- the two-track pulley on the engine (drawn side by side so both tracks show) -->
+    <path d="M190 400 L290 488 L390 400" stroke-width="5"/>
+    <circle cx="190" cy="400" r="40" fill="#fff" stroke-width="3"/><circle cx="190" cy="400" r="32" stroke-width="1.2"/><circle cx="190" cy="400" r="5" fill="#000"/>
+    <circle cx="390" cy="400" r="40" fill="#fff" stroke-width="3"/><circle cx="390" cy="400" r="32" stroke-width="1.2"/><circle cx="390" cy="400" r="5" fill="#000"/>
+    <path d="M290 488 V506" stroke-width="5"/>
+    <rect x="215" y="506" width="150" height="74" rx="8" fill="#fff" stroke-width="3"/>
+    <text x="290" y="538" font-size="20" font-weight="700" text-anchor="middle" fill="#000" stroke="none">ENGINE</text>
+    <text x="290" y="564" font-size="18" text-anchor="middle" fill="#000" stroke="none">120 N</text>
+    <!-- the rope -->
+    <path d="M150 64 V400 A40 40 0 0 0 230 400 V130 A60 60 0 0 1 350 130 V400 A40 40 0 0 0 430 400 V54 Q430 40 446 40 Q480 40 480 70 V330" stroke-width="5"/>
+    <path d="M140 66 Q150 76 160 66" stroke-width="3"/>
+    <path d="M466 316 L480 340 L494 316" stroke-width="4"/>
+    <text x="500" y="300" font-size="18" font-weight="700" fill="#000" stroke="none">PULL</text>
+    <!-- the four pieces that hold the engine -->
+    <g font-size="17" font-weight="700" text-anchor="middle">
+      <circle cx="124" cy="290" r="15" fill="#fff" stroke-width="2.5"/><text x="124" y="296" fill="#000" stroke="none">1</text>
+      <circle cx="256" cy="290" r="15" fill="#fff" stroke-width="2.5"/><text x="256" y="296" fill="#000" stroke="none">2</text>
+      <circle cx="324" cy="290" r="15" fill="#fff" stroke-width="2.5"/><text x="324" y="296" fill="#000" stroke="none">3</text>
+      <circle cx="455" cy="290" r="15" fill="#fff" stroke-width="2.5"/><text x="455" y="296" fill="#000" stroke="none">4</text>
+    </g>
+    <!-- labels -->
+    <g font-size="14" fill="#000" stroke="none">
+      <text x="302" y="62">big pulley</text>
+      <text x="136" y="92" text-anchor="end">eyehole</text>
+      <text x="400" y="458">two-track pulley</text>
+      <text x="400" y="476">(on the engine)</text>
+    </g>
+  </svg>
+  <div class="foot"><span>4 pieces of rope hold the engine. The pieces share the weight.</span><span>How to Land a Spaceship</span></div>
+</div></div>
+
+<script>document.querySelectorAll('[data-print]').forEach(function(b){b.addEventListener('click',function(){window.print();});});</script>
+</body>
+</html>

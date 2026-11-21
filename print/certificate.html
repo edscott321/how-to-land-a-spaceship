@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- One per student, filled in by hand after the
+     landing; the landing time is on the ship computer's last screen. -->
+<title>Cadet Wings · How to Land a Spaceship</title>
+<link rel="stylesheet" href="print.css">
+<style>
+@page { size: letter landscape; margin: 0; }
+.cert .frame { border-width: 4pt; text-align: center; align-items: center; padding: .25in .6in; }
+.cert .inner { position: absolute; inset: 8pt; border: 1pt solid #000; border-radius: 9pt; pointer-events: none; }
+.cert svg { width: 4.6in; height: auto; margin-top: 4pt; }
+.cert h1 { font-size: 54pt; letter-spacing: .06em; text-transform: uppercase; margin: 2pt 0 0; }
+.cert .sub { font-size: 15pt; margin-top: 10pt; }
+.cert .name { width: 6.4in; border-bottom: 1.5pt solid #000; height: 44pt; margin: 6pt auto 0; }
+.cert .what { font-size: 15pt; max-width: 7.4in; margin: 12pt auto 0; line-height: 1.45; }
+.cert .fields { display: flex; gap: .35in; justify-content: center; margin-top: 18pt; width: 100%; }
+.cert .fields div { flex: 1; max-width: 2.6in; }
+.cert .fields span { display: block; border-bottom: 1.5pt solid #000; height: 28pt; }
+.cert .fields small { display: block; font-size: 10pt; letter-spacing: .12em; text-transform: uppercase; margin-top: 4pt; }
+</style>
+</head>
+<body>
+<div class="bar"><b>Cadet wings: 1 page, landscape, one per student</b><a href="./">All printables</a><a href="../kit/certificate.pdf">PDF</a><button type="button" data-print>Print</button></div>
+
+<div class="sheet land cert"><div class="frame"><div class="inner"></div>
+  <span class="tag" style="margin-top:6pt">StS Sentinel · Atmospheric re-entry cadet training</span>
+  <svg viewBox="0 0 440 110" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <g stroke-width="3">
+      <path d="M190 50 C150 30 90 24 14 30 C60 40 110 52 190 62"/>
+      <path d="M190 62 C140 58 90 56 40 62 C84 68 130 72 190 74"/>
+      <path d="M190 74 C150 76 112 80 74 92 C114 92 150 90 190 86"/>
+      <path d="M250 50 C290 30 350 24 426 30 C380 40 330 52 250 62"/>
+      <path d="M250 62 C300 58 350 56 400 62 C356 68 310 72 250 74"/>
+      <path d="M250 74 C290 76 328 80 366 92 C326 92 290 90 250 86"/>
+      <path d="M60 33 L74 46 M100 30 L112 47 M140 32 L150 50 M80 60 L96 66 M120 58 L134 68 M110 82 L124 88 M150 78 L160 86" stroke-width="1.5"/>
+      <path d="M380 33 L366 46 M340 30 L328 47 M300 32 L290 50 M360 60 L344 66 M320 58 L306 68 M330 82 L316 88 M290 78 L280 86" stroke-width="1.5"/>
+    </g>
+    <circle cx="220" cy="62" r="36" fill="#fff" stroke-width="4"/>
+    <circle cx="220" cy="62" r="29" stroke-width="1.5"/>
+    <path d="M220 38 L226 56 L245 56 L230 67 L236 85 L220 74 L204 85 L210 67 L195 56 L214 56 Z" fill="#000" stroke="none"/>
+  </svg>
+  <h1>Cadet wings</h1>
+  <div class="sub">This certifies that</div>
+  <div class="name"></div>
+  <div class="what">served on the crew of the StS Sentinel, used Newton's laws, pulleys, gears, circuits and a little math to fix the ship, and brought it home through the atmosphere at a safe angle.</div>
+  <div class="fields">
+    <div><span></span><small>Crew</small></div>
+    <div><span></span><small>Landing time</small></div>
+    <div><span></span><small>Date</small></div>
+    <div><span></span><small>Admiral</small></div>
+  </div>
+  <div class="foot" style="width:100%"><span>How to Land a Spaceship</span><span>Built for Stanford Spokes 2024</span></div>
+</div></div>
+
+<script>document.querySelectorAll('[data-print]').forEach(function(b){b.addEventListener('click',function(){window.print();});});</script>
+</body>
+</html>

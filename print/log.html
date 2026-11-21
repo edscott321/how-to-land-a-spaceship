@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- One per crew; the log keeper fills it in and it
+     doubles as the worksheet a teacher grades. Station names and order match the guide (../guide/). -->
+<title>Captain's Log · How to Land a Spaceship</title>
+<link rel="stylesheet" href="print.css">
+<style>
+@page { size: letter portrait; margin: 0; }
+.log { font-size: 11.5pt; }
+.log .frame { padding: .24in .3in .16in; }
+.log h1 { font-size: 26pt; text-transform: uppercase; margin: 2pt 0 6pt; }
+.log .fields { display: grid; grid-template-columns: 1.4fr 1fr; gap: 4pt 18pt; }
+.log .fields label, .log .crew label { display: flex; align-items: flex-end; gap: 6pt; font-weight: 700; }
+.log .fields label span, .log .crew label span { flex: 1; border-bottom: 1pt solid #000; height: 20pt; }
+.log h2 { font-size: 11pt; letter-spacing: .12em; text-transform: uppercase; margin: 10pt 0 5pt; }
+.log .crew { display: grid; grid-template-columns: 1fr 1fr; gap: 4pt 18pt; }
+.log .crew small { display: block; font-weight: 400; font-size: 8.5pt; }
+.log .stations { display: grid; grid-template-columns: 1fr 1fr; gap: 10pt; flex: 1; min-height: 0; }
+.log .st { border: 1.5pt solid #000; border-radius: 8pt; padding: 7pt 9pt; display: flex; flex-direction: column; min-height: 0; }
+.log .st h3 { font-size: 12.5pt; display: flex; justify-content: space-between; gap: 6pt; }
+.log .st h3 small { font: 700 8pt/1.4 ui-monospace, Menlo, Consolas, "Courier New", monospace; letter-spacing: .1em; text-transform: uppercase; }
+.log .st .q { font-size: 9.5pt; margin: 2pt 0 4pt; }
+.log .st .work { flex: 1; min-height: 40pt; }
+.log .st .end { display: flex; justify-content: space-between; align-items: center; margin-top: 5pt; font-size: 10pt; font-weight: 700; }
+.log .st .end .codebox { display: inline-block; width: 1.25in; height: 22pt; border: 1.5pt solid #000; border-radius: 4pt; vertical-align: middle; margin-left: 4pt; }
+.log .ring { display: inline-block; width: 11pt; height: 11pt; border: 1.2pt solid #000; border-radius: 50%; vertical-align: middle; margin-left: 2pt; }
+.log table { width: 100%; border-collapse: collapse; font-size: 11pt; margin-top: 2pt; }
+.log th, .log td { border: 1.2pt solid #000; padding: 4pt 6pt; text-align: left; height: 26pt; }
+.log th { font-size: 9pt; letter-spacing: .06em; text-transform: uppercase; height: auto; }
+.log .p2 .stations { flex: none; height: 4.6in; }
+.log .lines div { border-bottom: 1pt solid #000; height: 22pt; }
+</style>
+</head>
+<body>
+<div class="bar"><b>Captain's log: 2 pages, one per crew (print both sides)</b><a href="./">All printables</a><a href="../kit/log.pdf">PDF</a><button type="button" data-print>Print</button></div>
+
+<div class="sheet log"><div class="frame">
+  <div class="tag">StS Sentinel · Captain's log · page 1 of 2</div>
+  <h1>Captain's log</h1>
+  <div class="fields"><label>Crew name <span></span></label><label>Date <span></span></label></div>
+  <h2>The crew</h2>
+  <div class="crew">
+    <label>Engineer<small>builds and tests</small> <span></span></label>
+    <label>Navigator<small>does the math</small> <span></span></label>
+    <label>Reader<small>reads the cards out loud</small> <span></span></label>
+    <label>Log keeper<small>writes in this log</small> <span></span></label>
+  </div>
+  <h2>Systems</h2>
+  <div class="stations">
+    <div class="st"><h3>1. Artificial gravity <small>Bridge</small></h3><div class="q">Which switches are true? Why?</div><div class="work"></div><div class="end"><span>Code <i class="codebox"></i></span><span>Hints <i class="ring"></i><i class="ring"></i><i class="ring"></i></span></div></div>
+    <div class="st"><h3>2. Engine lift <small>Engine Room</small></h3><div class="q">How many pieces of rope? How much pull?</div><div class="work"></div><div class="end"><span>Code <i class="codebox"></i></span><span>Hints <i class="ring"></i><i class="ring"></i><i class="ring"></i></span></div></div>
+    <div class="st"><h3>3. Engine gears <small>Engine Room</small></h3><div class="q">One turn of the small gear moves the big gear how far?</div><div class="work"></div><div class="end"><span>Code <i class="codebox"></i></span><span>Hints <i class="ring"></i><i class="ring"></i><i class="ring"></i></span></div></div>
+    <div class="st"><h3>4. Fuel tank <small>Fuel Bay</small></h3><div class="q">Cups to milliliters. Show the math.</div><div class="work"></div><div class="end"><span>Code <i class="codebox"></i></span><span>Hints <i class="ring"></i><i class="ring"></i><i class="ring"></i></span></div></div>
+  </div>
+  <div class="foot"><span>Fill in a ring for each hint the ship computer gave you.</span><span>How to Land a Spaceship</span></div>
+</div></div>
+
+<div class="sheet log p2"><div class="frame">
+  <div class="tag">StS Sentinel · Captain's log · page 2 of 2</div>
+  <div class="stations" style="margin-top:6pt">
+    <div class="st"><h3>5. Fuel balance <small>Fuel Bay</small></h3><div class="q">Weight × distance on each side.</div><div class="work"></div><div class="end"><span>Code <i class="codebox"></i></span><span>Hints <i class="ring"></i><i class="ring"></i><i class="ring"></i></span></div></div>
+    <div class="st"><h3>6. Navigation wiring <small>Navigation</small></h3><div class="q">Which lamps lit? Why didn't the others?</div><div class="work"></div><div class="end"><span>Code <i class="codebox"></i></span><span>Hints <i class="ring"></i><i class="ring"></i><i class="ring"></i></span></div></div>
+    <div class="st"><h3>7. Thrusters <small>Navigation</small></h3><div class="q">1 band or 3: which was faster? Then force ÷ mass.</div><div class="work"></div><div class="end"><span>Code <i class="codebox"></i></span><span>Hints <i class="ring"></i><i class="ring"></i><i class="ring"></i></span></div></div>
+    <div class="st"><h3>8. Main computer <small>Bridge</small></h3><div class="q">The decoded message:</div><div class="work"></div><div class="end"><span>Code <i class="codebox"></i></span><span>Hints <i class="ring"></i><i class="ring"></i><i class="ring"></i></span></div></div>
+  </div>
+  <h2>9. Re-entry angle</h2>
+  <table>
+    <tr><th>Path</th><th>Drop (km)</th><th>Forward (km)</th><th>57 × drop ÷ forward</th><th>Safe, burns up, or skips off?</th></tr>
+    <tr><td><b>A</b></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td><b>B</b></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td><b>C</b></td><td></td><td></td><td></td><td></td></tr>
+  </table>
+  <div class="fields" style="margin-top:8pt"><label>Our angle <span></span></label><label>Landing time <span></span></label></div>
+  <h2>Captain's report</h2>
+  <div class="lines"><div style="height:16pt;border:0;font-size:10.5pt">Which station had the best physics? Explain it in one sentence.</div><div></div><div></div></div>
+  <div class="foot"><span>The Admiral signs here: ____________________</span><span>How to Land a Spaceship</span></div>
+</div></div>
+
+<script>document.querySelectorAll('[data-print]').forEach(function(b){b.addEventListener('click',function(){window.print();});});</script>
+</body>
+</html>

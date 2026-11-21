@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The guide's Navigation wiring station: a battery
+     with three paths side by side. Path A: lamp 8. Path B: lamp 4 and an open switch. Path C: lamps 2 and 1, one
+     after the other. Lamps 8, 2 and 1 light, so the code is 11. The drawing shows no lit lamps (that's the puzzle). -->
+<title>Wiring Diagram · How to Land a Spaceship</title>
+<link rel="stylesheet" href="print.css">
+<style>
+@page { size: letter landscape; margin: 0; }
+.wiring h1 { font-size: 28pt; text-transform: uppercase; margin: 4pt 0 2pt; }
+.wiring p { margin: 0; font-size: 13pt; }
+.wiring svg { width: 100%; flex: 1; min-height: 0; margin-top: 6pt; }
+</style>
+</head>
+<body>
+<div class="bar"><b>Wiring diagram: 1 page, landscape</b><a href="./">All printables</a><a href="../kit/wiring.pdf">PDF</a><button type="button" data-print>Print</button></div>
+
+<div class="sheet land wiring" data-station="wiring"><div class="frame">
+  <div class="tag">StS Sentinel · Navigation · System 06 · Backup circuit</div>
+  <h1>Backup navigation circuit</h1>
+  <p>Build it exactly as drawn: one battery, three paths side by side.</p>
+  <svg viewBox="0 0 700 410" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" data-lamps="8 4 2 1">
+    <!-- battery and the wires to the two sides -->
+    <path d="M60 150 V40 H150 V290 M60 230 V350 H600 V70"/>
+    <path d="M36 172 H84" stroke-width="4"/><path d="M48 184 H72" stroke-width="7"/>
+    <path d="M36 200 H84" stroke-width="4"/><path d="M48 212 H72" stroke-width="7"/>
+    <path d="M60 150 V172 M60 212 V230"/>
+    <text x="22" y="170" font-size="18" font-weight="700" fill="#000" stroke="none">+</text>
+    <text x="74" y="262" font-size="14" fill="#000" stroke="none">battery</text>
+    <!-- path A: lamp 8 -->
+    <path d="M150 70 H600"/>
+    <!-- path B: lamp 4 and an open switch -->
+    <path d="M150 180 H440 M480 180 H600"/>
+    <path d="M440 180 L478 156" stroke-width="3.5"/>
+    <circle cx="440" cy="180" r="4" fill="#000"/><circle cx="482" cy="180" r="4" fill="#fff"/>
+    <text x="436" y="214" font-size="14" fill="#000" stroke="none">switch (open)</text>
+    <!-- path C: lamps 2 and 1, one after the other -->
+    <path d="M150 290 H600"/>
+    <!-- junction dots -->
+    <g fill="#000" stroke="none"><circle cx="150" cy="70" r="6"/><circle cx="150" cy="180" r="6"/><circle cx="600" cy="70" r="6"/><circle cx="600" cy="180" r="6"/><circle cx="600" cy="290" r="6"/><circle cx="150" cy="40" r="0"/></g>
+    <!-- lamps -->
+    <g fill="#fff">
+      <circle cx="380" cy="70" r="22"/><path d="M364 54 L396 86 M396 54 L364 86"/>
+      <circle cx="300" cy="180" r="22"/><path d="M284 164 L316 196 M316 164 L284 196"/>
+      <circle cx="300" cy="290" r="22"/><path d="M284 274 L316 306 M316 274 L284 306"/>
+      <circle cx="460" cy="290" r="22"/><path d="M444 274 L476 306 M476 274 L444 306"/>
+    </g>
+    <g font-size="20" font-weight="800" text-anchor="middle" fill="#000" stroke="none">
+      <text x="380" y="36">LAMP 8</text><text x="300" y="146">LAMP 4</text><text x="300" y="256">LAMP 2</text><text x="460" y="256">LAMP 1</text>
+    </g>
+    <g font-size="16" font-weight="700" fill="#000" stroke="none">
+      <text x="170" y="60">PATH A</text><text x="170" y="170">PATH B</text><text x="170" y="280">PATH C</text>
+    </g>
+    <!-- key -->
+    <g transform="translate(150 372)" font-size="14" fill="#000">
+      <circle cx="14" cy="10" r="10" fill="#fff" stroke-width="2"/><path d="M7 3 L21 17 M21 3 L7 17" stroke-width="2"/>
+      <text x="32" y="15" stroke="none">lamp</text>
+      <circle cx="104" cy="10" r="5" stroke="none"/><text x="118" y="15" stroke="none">wires join</text>
+    </g>
+  </svg>
+  <div class="foot"><span>Navigation code: add up the numbers on the lamps that light.</span><span>How to Land a Spaceship</span></div>
+</div></div>
+
+<script>document.querySelectorAll('[data-print]').forEach(function(b){b.addEventListener('click',function(){window.print();});});</script>
+</body>
+</html>

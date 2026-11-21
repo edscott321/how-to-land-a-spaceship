@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- For the teacher: where each station goes, from the
+     guide's "What you need" (three corners labeled Engine Room, Fuel Bay and Navigation; the ship computer at the
+     front as the Bridge; the gravity switch card by the door). No codes on it, in case students see it. -->
+<title>Room Map · How to Land a Spaceship</title>
+<link rel="stylesheet" href="print.css">
+<style>
+@page { size: letter landscape; margin: 0; }
+.map .head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16pt; }
+.map h1 { font-size: 26pt; text-transform: uppercase; margin-top: 2pt; }
+.map p { margin: 4pt 0 0; font-size: 11pt; }
+.map svg { width: 100%; flex: 1; min-height: 0; margin-top: 6pt; }
+.map svg text { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+.map .grid { flex: 1; margin-top: 8pt; border: 2pt solid #000; background-image: linear-gradient(#bbb 1px, transparent 1px), linear-gradient(90deg, #bbb 1px, transparent 1px); background-size: .5in .5in; background-position: -1px -1px; }
+.map ul { margin: 6pt 0 0; padding-left: 16pt; columns: 3; font-size: 10.5pt; }
+</style>
+</head>
+<body>
+<div class="bar"><b>Room map: 2 pages, landscape (the map and a blank grid for your own room)</b><a href="./">All printables</a><a href="../kit/map.pdf">PDF</a><button type="button" data-print>Print</button></div>
+
+<div class="sheet land map"><div class="frame">
+  <div class="head"><div><span class="tag">StS Sentinel · Deck plan · for the teacher</span><h1>Room map</h1></div><span class="tag">Front of the room at the top</span></div>
+  <svg viewBox="0 0 960 560" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round">
+    <!-- walls, with a gap for the door on the right -->
+    <path d="M920 150 V540 H40 V20 H920 V70" stroke-width="6"/>
+    <path d="M920 70 A80 80 0 0 0 840 150 M920 150 H840" stroke-width="2"/>
+    <text x="852" y="176" font-size="15" font-weight="700" fill="#000" stroke="none">DOOR</text>
+    <!-- the gravity card by the door -->
+    <rect x="904" y="200" width="16" height="44" fill="#000" stroke="none"/>
+    <path d="M900 222 H858" stroke-width="1.5" stroke-dasharray="4 4"/>
+    <text x="630" y="214" font-size="14" font-weight="700" fill="#000" stroke="none">1 · GRAVITY SWITCH CARD</text>
+    <text x="630" y="232" font-size="13" fill="#000" stroke="none">taped by the door, ball or toy car</text>
+    <!-- the Bridge -->
+    <path d="M370 20 H590" stroke-width="12"/>
+    <text x="480" y="48" font-size="13" text-anchor="middle" fill="#000" stroke="none">PROJECTOR SCREEN · THE SHIP COMPUTER</text>
+    <rect x="330" y="62" width="300" height="130" rx="14" stroke-width="2" stroke-dasharray="8 6"/>
+    <text x="480" y="86" font-size="18" font-weight="800" text-anchor="middle" fill="#000" stroke="none">THE BRIDGE</text>
+    <rect x="346" y="100" width="268" height="44" rx="4" stroke-width="2.5"/>
+    <text x="480" y="127" font-size="13" text-anchor="middle" fill="#000" stroke="none">desk: laptop · metal box · plastic box</text>
+    <text x="480" y="174" font-size="13" text-anchor="middle" fill="#000" stroke="none">8 · Main computer · 9 · Re-entry angle</text>
+    <!-- Navigation (front left) -->
+    <rect x="62" y="42" width="240" height="190" rx="14" stroke-width="2" stroke-dasharray="8 6"/>
+    <text x="78" y="70" font-size="18" font-weight="800" fill="#000" stroke="none">NAVIGATION</text>
+    <rect x="82" y="86" width="96" height="50" rx="4" stroke-width="2.5"/>
+    <text x="90" y="116" font-size="12" fill="#000" stroke="none">table: kit</text>
+    <path d="M206 92 v20 M262 92 v20 M206 102 H262" stroke-width="2.5"/>
+    <rect x="216" y="150" width="36" height="22" stroke-width="2.5"/>
+    <text x="78" y="196" font-size="13" fill="#000" stroke="none">6 · Wiring: electronics kit</text>
+    <text x="78" y="214" font-size="13" fill="#000" stroke="none">7 · Thrusters: bands, chairs, tray</text>
+    <!-- Engine Room (back left) -->
+    <rect x="62" y="330" width="260" height="190" rx="14" stroke-width="2" stroke-dasharray="8 6"/>
+    <text x="78" y="358" font-size="18" font-weight="800" fill="#000" stroke="none">ENGINE ROOM</text>
+    <circle cx="112" cy="406" r="20" stroke-width="2.5"/><path d="M112 386 V370 M92 406 V440 M132 406 V430" stroke-width="2"/><rect x="98" y="430" width="28" height="18" stroke-width="2"/>
+    <circle cx="216" cy="420" r="26" stroke-width="7" stroke-dasharray="4 4"/><circle cx="256" cy="398" r="11" stroke-width="6" stroke-dasharray="3.5 3.5"/>
+    <text x="78" y="482" font-size="13" fill="#000" stroke="none">2 · Engine lift: pulleys on a hook</text>
+    <text x="78" y="500" font-size="13" fill="#000" stroke="none">3 · Engine gears: on a board</text>
+    <!-- Fuel Bay (back right) -->
+    <rect x="638" y="330" width="260" height="190" rx="14" stroke-width="2" stroke-dasharray="8 6"/>
+    <text x="654" y="358" font-size="18" font-weight="800" fill="#000" stroke="none">FUEL BAY</text>
+    <rect x="660" y="378" width="96" height="70" rx="6" stroke-width="2.5"/><path d="M684 390 h18 v8 h-18 z M680 400 h26 v40 h-26 z" stroke-width="2"/>
+    <text x="714" y="420" font-size="12" fill="#000" stroke="none">tray</text>
+    <path d="M790 420 H880 M835 422 l-10 18 h20 z" stroke-width="2.5"/>
+    <text x="654" y="482" font-size="13" fill="#000" stroke="none">4 · Fuel tank: on a tray (water)</text>
+    <text x="654" y="500" font-size="13" fill="#000" stroke="none">5 · Fuel balance: ruler on a pencil</text>
+    <!-- the crew's seats in the middle -->
+    <g stroke-width="2"><rect x="390" y="262" width="60" height="36" rx="3"/><rect x="460" y="262" width="60" height="36" rx="3"/><rect x="530" y="262" width="60" height="36" rx="3"/><rect x="390" y="312" width="60" height="36" rx="3"/><rect x="460" y="312" width="60" height="36" rx="3"/><rect x="530" y="312" width="60" height="36" rx="3"/></g>
+    <text x="490" y="378" font-size="13" text-anchor="middle" fill="#000" stroke="none">crew seats for the briefing</text>
+    <text x="490" y="396" font-size="13" text-anchor="middle" fill="#000" stroke="none">(push desks back to make room)</text>
+  </svg>
+  <div class="foot"><span>Tape construction paper over the windows and walls. A red bike light for when gravity goes off is a nice touch.</span><span>How to Land a Spaceship</span></div>
+</div></div>
+
+<div class="sheet land map"><div class="frame">
+  <div class="head"><div><span class="tag">StS Sentinel · Deck plan · for the teacher</span><h1>Your room</h1></div><span class="tag">Each square is half an inch</span></div>
+  <p>Draw your room and mark where each station goes. Keep the Fuel Bay away from anything that water would ruin, and give the thrusters a clear stretch of floor.</p>
+  <div class="grid"></div>
+  <ul><li>Bridge: screen, desk, both boxes</li><li>1 · Gravity card by the door</li><li>Engine Room: 2 lift, 3 gears</li><li>Fuel Bay: 4 tank, 5 balance</li><li>Navigation: 6 wiring, 7 thrusters</li><li>Crew seats for the briefing</li></ul>
+  <div class="foot"><span>How to Land a Spaceship</span><span>Free to use, copy and change</span></div>
+</div></div>
+
+<script>document.querySelectorAll('[data-print]').forEach(function(b){b.addEventListener('click',function(){window.print();});});</script>
+</body>
+</html>
